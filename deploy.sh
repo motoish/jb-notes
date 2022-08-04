@@ -8,4 +8,4 @@ jb build --all jb-notes
 cd -
 
 # echo $(cd $(dirname $0);pwd)
-ghp-import -n -p -f _build/html -c hangyuz.me
+ghp-import -n -p -f _build/html -c hangyuz.net
