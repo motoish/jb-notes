@@ -6,7 +6,13 @@ Learning Jupyter, and note it by Jupyter Book Community.
 
 ## Deployment
 
-All you need to do is:
+### Before publish your book, it needs to install the tools:
+
+```
+pip install -r requirements.txt
+```
+
+### All you need to do is:
 
 ```
 $ jb build --all jb-notes
