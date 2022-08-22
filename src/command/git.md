@@ -18,6 +18,14 @@ $ git push origin --delete {tag_name}
 
 *引用: [第18話 便利なgit tagの使い方！コミットにタグをつけて管理しやすくしよう【連載】マンガでわかるGit ～コマンド編～](https://www.r-staffing.co.jp/engineer/entry/20201120_1)*
 
+### 3. synchronize branch list
+
+The `-p` flag means "prune". After fetching, branches which no longer exist on the remote will be deleted.
+
+```
+$ git fetch -p
+```
+
 ## Branch
 
 ### 1. change local branch name
