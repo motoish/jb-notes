@@ -1,5 +1,13 @@
 # Python
 
+## delete all of the modules
+
+```
+pip freeze > piplist.txt
+pip uninstall -r piplist.txt -y
+rm piplist.txt
+```
+
 ## logging 実装例
 
 ```python
