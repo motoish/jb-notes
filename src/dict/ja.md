@@ -10,7 +10,7 @@
 
 標準 SQL を使用し Amazon S3 のデータ分析を簡易化するインタラクティブなクエリサービス。サーバレスであり、自動的にスケーリングする。数秒以内にデータセットの分析を開始可能。
 
-### Amazon Aurora
+### [Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/)
 
 オープンソースデータベースのシンプルさとコスト効率性を持つとともに、商用データベースのパフォーマンスと可用性を持つ DB 。フルマネージド型 MySQL および PostgreSQL と互換性のある RDB エンジン。
 
@@ -162,7 +162,7 @@ AWS 上でメッセージブローカーを容易に設定および運用でき�
 
 並行したステップや連続したステップのあるバッククラウドジョブを構築、実行、拡張するのを支援するフルマネージドサービス。クラウド内で、ステータストラッカーや、タスクコーディネーターのような役割を実施。
 
-### Amazon Virtual Private Cloud (Amazon VPC)
+### [Amazon Virtual Private Cloud (Amazon VPC)](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 
 AWS クラウドの論理的に隔離された仮想ネットワークを構築するサービス。独自のＩＰアドレス範囲の選択、サブネットの作成、ルートテーブル、ネットワークゲートウェイの設定など、仮想ネットワーク環境をコントロール可能。
 
