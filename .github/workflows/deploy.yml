@@ -1,0 +1,4 @@
+name: Deploy jb-notes to GitHub Pages
+
+on: [push]
+ 
