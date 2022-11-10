@@ -6,7 +6,8 @@ on:
   pull_request:
 
 env:
-  DOMAIN_DOT_NET: "hangyuz.net"
+  DOMAIN_DOT_NET: 'hangyuz.net'
+  CHANNEL_ID: 'CU55JSU9F'
 
 jobs:
   Build-and-Deploy:
@@ -33,3 +34,12 @@ jobs:
 
       - name: Publish GitHub Pages
         run: ghp-import -n -p -f _build/html -c ${{ env.DOMAIN_DOT_NET }}
+
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          channel-id: ${{ env.CHANNEL_ID }}
+          slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
