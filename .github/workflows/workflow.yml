@@ -1,3 +1,4 @@
+---
 name: Deploy jb-notes to GitHub Pages
 
 on:
@@ -10,7 +11,26 @@ env:
   CHANNEL_ID: 'CU55JSU9F'
 
 jobs:
-  Build-and-Deploy:
+  linter:
+    name: super linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          MARKDOWN_CONFIG_FILE: .markdown-lint.yml
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    name: build and deploy
+    needs: linter
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
