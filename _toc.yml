@@ -58,6 +58,7 @@ parts:
       - file: src/settings/VSCode01
       - file: src/settings/PowerShell01
       - file: src/settings/iterm2
+      - file: src/settings/alacritty
       - file: src/settings/others
   - caption: Appendix
     numbered: False
