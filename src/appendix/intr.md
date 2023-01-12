@@ -2,7 +2,7 @@
 
 ## How to create this note?
 
-1. Write articles by markdown.
+1. Write articles by Markdown.
 2. Publish your book online.
 
 ### TL;DR(ja)
@@ -15,7 +15,8 @@
 #### (1)ノートや記事を用意する
 
 - ディレクトリ構成
-  ```
+
+  ```txt
   ├─ src
   │  ├─ index.md
   │  └─ ..
@@ -25,13 +26,13 @@
 
 #### (2) ghp-import で release する
 
-*if home directory was jb-notes*
+_if home directory was jb-notes._
 
-```
-$ cd ../
-$ jb build --all jb-notes            # _build will be generated
-$ cd jb-notes
-$ ghp-import -n -p -f _build/html
+```sh
+cd ../
+jb build --all jb-notes            # _build will be generated
+cd jb-notes
+ghp-import -n -p -f _build/html
 ```
 
 [Reference](https://jupyterbook.org/start/publish.html#publish-your-book-online)

@@ -4,13 +4,14 @@
 
 ### 1.1. Retrieve solution stack names from ListAvailableSolutionStacks API
 
-```
+```aws
 aws elasticbeanstalk list-available-solution-stacks
 ```
 
 ::: {tip}
 :class: dropdown
-```
+
+```sh
 {
     "SolutionStacks": [
         "64bit Amazon Linux 2018.03 v4.17.10 running Node.js",
@@ -107,13 +108,13 @@ aws elasticbeanstalk list-available-solution-stacks
 
 #### create a new access key
 
-```
+```aws
 aws iam create-access-key
 ```
 
 #### configure new access key
 
-```
+```aws
 aws configure
 aws iam update-access-key --access-key-id {OLD_ACCESS_KEY} --status Inactive --user-name {user_name}
 aws iam update-access-key --access-key-id {NEW_ACCESS_KEY} --status Active --user-name {user_name}
@@ -124,13 +125,13 @@ aws configure list
 
 #### try to access s3 with new configuration
 
-```
+```aws
 aws s3 ls
 ```
 
 #### delete old access key
 
-```
+```aws
 aws iam delete-access-key --access-key-id {OLD_ACCESS_KEY} --user-name {user_name}
 ```
 
@@ -140,49 +141,55 @@ aws iam delete-access-key --access-key-id {OLD_ACCESS_KEY} --user-name {user_nam
 
 #### list of key pairs
 
-```
+```aws
 aws ec2 describe-key-pairs
 ```
 
 #### show the detail of existed key pair
 
-```
+```aws
 aws ec2 describe-key-pairs --key-name {KeyPair_NAME}
 ```
 
 #### delete unnecessary key pair
 
-```
+```aws
 aws ec2 delete-key-pair --key-name {KeyPair_NAME}
 ```
 
 ### 1.4. Get Account ID
 
-```
+```aws
 echo $(aws sts get-caller-identity) | awk '{print $5}' | sed -e 's/"//g' -e 's/,//g' | pbcopy
 ```
 
 ### 1.5 Get list of Amazon Linux 2 AMI ImageId
 
-```
+```aws
 aws ssm get-parameters-by-path --path "/aws/service/ami-amazon-linux-latest" --region us-east-1 --query 'Parameters[:].[Name,Value]' --output table
 ```
 
-## 2. AWS S3 だけで静的コンテンツを配信する
+## 2. AWS CDK
 
-### 2.1. S3 バケットを作成する
+### HANDS-ON: GitHub
+
+[awscdk-prac](https://github.com/mtngtnsh/awscdk-prac)
+
+## 3. AWS S3 だけで静的コンテンツを配信する
+
+### 3.1. S3 バケットを作成する
 
 selfnotessというバケットを作成した。  
 ..省略..
 
-### 2.2. self-notes の dist の内容を S3 バケットに配置する(public 状態に変更)
+### 3.2. self-notes の dist の内容を S3 バケットに配置する(public 状態に変更)
 
 ![s3 bucket directory](../img/cloud-publicly_accessible_suituation.png)
 
-### 2.3. アクセスする
+### 3.3. アクセスする
 
 ![access succeeded](../img/cloud-success.png)
 
-### 2.4. おまけ: CloudFront + Route53 + S3で独自ドメインを追加して配信する方法も試した
+### 3.4. おまけ: CloudFront + Route53 + S3で独自ドメインを追加して配信する方法も試した
 
 [AWS Certificate Manager](https://us-west-2.console.aws.amazon.com/acm/home?region=us-west-2#/firstrun/)
