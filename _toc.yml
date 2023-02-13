@@ -3,11 +3,6 @@ format: jb-book
 root: src/index
 
 parts:
-  - caption: Language
-    numbered: False
-    chapters:
-      - file: src/language/golang01
-      - file: src/language/python
   - caption: Cloud
     numbered: False
     chapters: 
@@ -20,6 +15,11 @@ parts:
       - file: src/cloud/cheatsheet/awsDeveloper
       - file: src/cloud/cheatsheet/awsSecurity
       - file: src/mindmap/m01-aws
+  - caption: Language
+    numbered: False
+    chapters:
+      - file: src/language/golang01
+      - file: src/language/python
   - caption: DB
     numbered: False
     chapters:
@@ -28,15 +28,6 @@ parts:
       - file: src/db/mongodb03
       - file: src/db/mongodb04
       - file: src/db/mysql
-  - caption: OSS
-    numbered: False
-    chapters:
-      - file: src/oss/kasm
-      - file: src/oss/midpoint
-      - file: src/oss/keycloak
-      - file: src/oss/portainer
-      - file: src/oss/helm
-      - file: src/oss/kafka
   - caption: Command
     numbered: False
     chapters:
@@ -48,6 +39,15 @@ parts:
       - file: src/command/docker
       - file: src/command/kubernetes
       - file: src/command/ffmpeg
+  - caption: OSS
+    numbered: False
+    chapters:
+      - file: src/oss/kasm
+      - file: src/oss/midpoint
+      - file: src/oss/keycloak
+      - file: src/oss/portainer
+      - file: src/oss/helm
+      - file: src/oss/kafka
   - caption: Dictionary
     numbered: False
     chapters:
