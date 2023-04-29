@@ -8,5 +8,4 @@
 
 ## Docs
 
-- [Portainer Community Edition (CE)](https://docs.portainer.io/v/ce-2.11/)
-- [Portainer Business Edition (BE)*](https://docs.portainer.io/v/be-2.10/)
+- [Portainer Documentation](https://docs.portainer.io/start/intro)

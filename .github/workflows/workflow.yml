@@ -6,6 +6,8 @@ on:
     branches: [main]
   pull_request:
 
+permissions: write-all
+
 jobs:
   linter:
     uses: ./.github/workflows/mega-linter.yml

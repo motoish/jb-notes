@@ -1,6 +1,6 @@
 # PowerShell
 
-## Install a custom prompt engine([Oh My Posh](https://ohmyposh.dev/docs/pwsh)) for PowerShell7
+## Install a custom prompt engine([Oh My Posh](https://ohmyposh.dev/docs/installation/prompt)) for PowerShell7
 
 ### Preview the themes(require a Nerd Font)
 
