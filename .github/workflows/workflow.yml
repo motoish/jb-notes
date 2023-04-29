@@ -1,5 +1,5 @@
 ---
-name: Deploy jb-notes to GitHub Pages
+name: hangyuz.net
 
 on:
   push:

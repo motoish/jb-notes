@@ -1,6 +1,6 @@
 # jb-notes
 
-[![MegaLinter](https://github.com/mtngtnsh/jb-notes/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/mtngtnsh/jb-notes/actions?query=workflow%3AMegaLinter+branch%3Amain)
+[![MegaLinter](https://github.com/mtngtnsh/jb-notes/workflows/hangyuz.net/badge.svg?branch=main)](https://github.com/mtngtnsh/jb-notes/actions?query=workflow%3Ahangyuz.net+branch%3Amain)
 
 ## Introduction
 
