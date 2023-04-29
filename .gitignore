@@ -1,3 +1,5 @@
 _build
 *.sh
 !*.md
+
+megalinter-reports/

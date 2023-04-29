@@ -5,7 +5,7 @@ root: src/index
 parts:
   - caption: Cloud
     numbered: False
-    chapters: 
+    chapters:
       - file: src/cloud/azure01
       - file: src/cloud/aws
       - file: src/cloud/aws-vpc-end2end-connection

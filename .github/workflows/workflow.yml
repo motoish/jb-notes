@@ -8,21 +8,7 @@ on:
 
 jobs:
   linter:
-    name: Linter
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Lint Code Base
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          MARKDOWN_CONFIG_FILE: .markdown-lint.yml
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    uses: ./.github/workflows/mega-linter.yml
 
   deploy:
     name: Deploy
@@ -33,9 +19,9 @@ jobs:
       - name: Setup Python 3.10
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
-          cache: 'pip'
-          cache-dependency-path: '**/requirements.txt'
+          python-version: "3.10"
+          cache: "pip"
+          cache-dependency-path: "**/requirements.txt"
       - run: pip install -r requirements.txt
 
       - name: Build Jupyter Book
