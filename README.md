@@ -1,6 +1,6 @@
 # jb-notes
 
-[![code quality](https://github.com/mtngtnsh/jb-notes/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![MegaLinter](https://github.com/mtngtnsh/jb-notes/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/mtngtnsh/jb-notes/actions?query=workflow%3AMegaLinter+branch%3Amain)
 
 ## Introduction
 
