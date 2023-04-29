@@ -37,13 +37,6 @@
 - [Google Cloud認定資格Professional Cloud Architectを受験した話](https://techblog.gmo-ap.jp/2019/09/25/google-cloud-certified-pca/)
 - [GCP認定資格 Professional Cloud Architect を取得した感想](https://tmrtmhr.info/tech/gcp/certification-professional-cloud-architect/)
 
-### Qwiklabs
-
-クリア時間：隙間の時間を使ってたため、測ってない
-
-- [Cloud Architecture - Design, Implement, and Manage](https://googlecourses.qwiklabs.com/quests/47?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&search_id=8037059)
-- [Architecting with Google Kubernetes Engine - Foundations](https://googlecourses.qwiklabs.com/course_templates/32?catalog_rank=%7B%22rank%22%3A6%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&search_id=8037059)
-
 ### 模擬問題
 
 クリア時間：11月からアベーラブルになってるので、毎日。  

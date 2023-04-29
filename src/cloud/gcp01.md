@@ -60,7 +60,6 @@ Udemyの模擬試験問題を受験日まで繰り返し練習していこうと
 
 - [Google Cloud Essentials](https://www.qwiklabs.com/quests/23?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A1%2C%22has_search%22%3Afalse%7D)
 - [Baseline: Infrastructure](https://www.qwiklabs.com/quests/33?catalog_rank=%7B%22rank%22%3A2%2C%22num_filters%22%3A1%2C%22has_search%22%3Afalse%7D)
-- [Google Cloud Fundamentals: Core Infrastructure](https://www.qwiklabs.com/courses/870?catalog_rank=%7B%22rank%22%3A2%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&search_id=5014761)
 - [Cloud Architecture](https://www.qwiklabs.com/quests/24)
 
 #### Cousera
