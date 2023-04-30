@@ -38,6 +38,15 @@ jobs:
           echo "github.event.head_commit.message: ${{ env.MESSAGE }}"
           echo "head_commit=${{ env.MESSAGE }}" | sed ':a;N;$!ba;s/\n//g' | awk '{print $1}' >> "$GITHUB_OUTPUT"
 
+  mention:
+    name: Mention
+    needs: [getenv]
+    if: ${{ contains(needs.getenv.outputs.head_commit, 'Merge') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Message
+        run: echo "It is not necessary to execute lint."
+
   linter:
     name: Linter
     needs: [getenv]
