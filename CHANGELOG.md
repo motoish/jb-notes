@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.6](https://github.com/mtngtnsh/jb-notes/compare/v1.0.5...v1.0.6) (2023-04-30)
+
+
+### Bug Fixes
+
+* add more envs ([81e4f32](https://github.com/mtngtnsh/jb-notes/commit/81e4f32667a9142162f642ffe6fa5f451bcf7aaa))
+* output envs ([6ef2482](https://github.com/mtngtnsh/jb-notes/commit/6ef2482124e631e8f9648ea22c9f5383a6714576))
+* syntax ([cdb1635](https://github.com/mtngtnsh/jb-notes/commit/cdb1635d22abfac07a12ccd9ec586d1bf91714aa))
+
 ## [1.0.4](https://github.com/mtngtnsh/jb-notes/compare/v1.0.3...v1.0.4) (2023-04-30)
 
 
