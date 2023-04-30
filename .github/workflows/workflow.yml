@@ -65,6 +65,7 @@ jobs:
 
   release-please:
     name: Release
+    needs: post
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
