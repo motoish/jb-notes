@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/mtngtnsh/jb-notes/compare/v1.1.1...v1.1.2) (2023-04-30)
+
+
+### Bug Fixes
+
+* deploy condition ([bf46d1a](https://github.com/mtngtnsh/jb-notes/commit/bf46d1a6da0773d6c68041f3d5bebb53f03469f3))
+
 ## [1.1.1](https://github.com/mtngtnsh/jb-notes/compare/v1.1.0...v1.1.1) (2023-04-30)
 
 
