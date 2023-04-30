@@ -2,11 +2,12 @@
 name: hangyuz.net
 
 on:
-  push:
-    branches: [main]
   pull_request:
     types:
+      - opened
       - closed
+    branches:
+      - main
 
 permissions:
   actions: write
