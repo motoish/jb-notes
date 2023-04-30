@@ -2,7 +2,9 @@
 name: Release
 
 on:
-  page_build:
+  push:
+    branches:
+      - gh-pages
 
 permissions:
   contents: write
