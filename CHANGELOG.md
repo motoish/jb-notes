@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.3](https://github.com/mtngtnsh/jb-notes/compare/v1.0.2...v1.0.3) (2023-04-30)
+
+
+### Bug Fixes
+
+* job condition ([95c48f7](https://github.com/mtngtnsh/jb-notes/commit/95c48f78e166b4b616956c4d4c69bd5a3f25c9c4))
+* linter condition ([48289d8](https://github.com/mtngtnsh/jb-notes/commit/48289d8aa8c048aa0096ccf07913527e13c6cc7d))
+* linter condition ([86590dd](https://github.com/mtngtnsh/jb-notes/commit/86590dd8b37b47f4f9278c8990e398a76375b597))
+
 ## [1.0.2](https://github.com/mtngtnsh/jb-notes/compare/v1.0.1...v1.0.2) (2023-04-30)
 
 
