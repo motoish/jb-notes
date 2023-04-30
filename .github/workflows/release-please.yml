@@ -38,23 +38,6 @@ jobs:
           echo "github.event.head_commit.message: ${{ env.MESSAGE }}"
           echo "head_commit=${{ env.MESSAGE }}" | sed ':a;N;$!ba;s/\n//g' | awk '{print $1}' >> "$GITHUB_OUTPUT"
 
-  check:
-    name: Check
-    needs: [getenv]
-    runs-on: ubuntu-latest
-    steps:
-      - name: check
-        if: ${{ !contains(needs.getenv.outputs.head_commit, 'Merge') }}
-        run: |
-          echo ${{ needs.getenv.outputs.head_commit }}
-          echo "hello push"
-
-      - name: merge
-        if: ${{ contains(needs.getenv.outputs.head_commit, 'Merge') }}
-        run: |
-          echo ${{ needs.getenv.outputs.head_commit }}
-          echo "hello merge"
-
   linter:
     name: Linter
     needs: [getenv]
