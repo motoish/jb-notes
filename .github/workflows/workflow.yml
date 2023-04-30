@@ -4,6 +4,7 @@ name: hangyuz.net
 on:
   push:
     branches: [main]
+  pull_request:
 
 permissions:
   actions: write
@@ -27,6 +28,7 @@ jobs:
 
   deploy:
     name: Deploy
+    if: ${{ github.event_name == 'pull_request' }}
     needs: linter
     runs-on: ubuntu-latest
     steps:
@@ -50,6 +52,7 @@ jobs:
 
   post:
     name: Post
+    if: ${{ github.event_name == 'pull_request' }}
     needs: deploy
     runs-on: ubuntu-latest
     steps:
