@@ -2,9 +2,11 @@
 name: hangyuz.net
 
 on:
-  push:
-    branches: [main]
   pull_request:
+    types:
+      - closed
+    branches:
+      - main
 
 permissions:
   actions: write
@@ -22,11 +24,6 @@ permissions:
   statuses: read
 
 jobs:
-  linter:
-    name: Linter
-    if: ${{ github.event_name == 'push' }}
-    uses: ./.github/workflows/mega-linter.yml
-
   deploy:
     name: Deploy
     if: ${{ github.event.pull_request.merged == true }}
