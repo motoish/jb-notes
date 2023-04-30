@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.5](https://github.com/mtngtnsh/jb-notes/compare/v1.1.4...v1.1.5) (2023-04-30)
+
+
+### Bug Fixes
+
+* permissions ([edb065a](https://github.com/mtngtnsh/jb-notes/commit/edb065ae635aa4c22b68a8709778d0d021c87feb))
+* reduce linter ([c721cfd](https://github.com/mtngtnsh/jb-notes/commit/c721cfd1cedce939446f5c96d483789c926113cf))
+
 ## [1.1.4](https://github.com/mtngtnsh/jb-notes/compare/v1.1.3...v1.1.4) (2023-04-30)
 
 
