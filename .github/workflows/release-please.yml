@@ -10,8 +10,19 @@ on:
       - closed
 
 permissions:
+  actions: read
+  checks: read
   contents: write
+  deployments: read
+  id-token: write
+  issues: read
+  discussions: read
+  packages: read
+  pages: read
   pull-requests: write
+  repository-projects: read
+  security-events: read
+  statuses: read
 
 jobs:
   linter:
