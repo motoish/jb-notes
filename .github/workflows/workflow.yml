@@ -48,6 +48,9 @@ jobs:
       - name: Publish GitHub Pages
         run: ghp-import -n -p -f _build/html -c ${{ secrets.DOMAIN_DOT_NET }}
 
+  release:
+    uses: ./.github/workflows/release-please.yml
+
   post:
     name: Post
     needs: deploy
