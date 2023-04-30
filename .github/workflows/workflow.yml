@@ -4,7 +4,6 @@ name: hangyuz.net
 on:
   push:
     branches: [main]
-  pull_request:
 
 permissions:
   actions: write
