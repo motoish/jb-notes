@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/mtngtnsh/jb-notes/compare/v1.0.0...v1.0.1) (2023-04-30)
+
+
+### Bug Fixes
+
+* release badge status address ([306f269](https://github.com/mtngtnsh/jb-notes/commit/306f269513162467f30ee30efadcd4ddd3e84166))
+
 ## 1.0.0 (2023-04-30)
 
 
