@@ -22,33 +22,32 @@ permissions:
   statuses: read
 
 jobs:
-  env:
+  getenv:
     name: Env
     runs-on: ubuntu-latest
+    outputs:
+      head_commit: ${{ github.event.head_commit.message }}
     steps:
       - uses: actions/checkout@v3
 
       - name: Echo env
+        env:
+          MESSAGE: ${{ github.event.head_commit.message }}
         run: |
-          echo 'github.base_ref: ${{ github.base_ref }}'
-          echo 'github.ref: ${{ github.ref }}'
-          echo 'github.ref_name: ${{ github.ref_name }}'
-          echo 'github.event_name: ${{ github.event_name }}'
-          echo 'github.event: ${{ github.event.ref }}'
-          echo 'github.action_ref: ${{ github.action_ref }}'
-          echo 'github.event_path:${{ github.event_path }}'
-          echo 'github.event.commits.message: ${{ github.event.commits.message }}'
+          echo "github.event.head_commit.message: ${{ env.MESSAGE }}"
+          echo "head_commit=${{ env.MESSAGE }}" | sed ':a;N;$!ba;s/\n//g' >> "$GITHUB_OUTPUT"
 
   linter:
     name: Linter
-    if: ${{ github.event_name == 'push' && github.head_ref == null }}
+    needs: [getenv]
+    if: "!contains(${{ needs.getenv.outputs.head_commit }}, 'Merge pull request')"
     uses: ./.github/workflows/mega-linter.yml
 
   release-please:
     name: Release
-    if: ${{ github.event_name == 'push' && github.head_ref == null }}
+    if: "!contains(${{ needs.getenv.outputs.head_commit }}, 'Merge pull request')"
     runs-on: ubuntu-latest
-    needs: linter
+    needs: [getenv, linter]
     steps:
       - uses: google-github-actions/release-please-action@v3
         with:
