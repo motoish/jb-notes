@@ -35,17 +35,32 @@ jobs:
           MESSAGE: ${{ github.event.head_commit.message }}
         run: |
           echo "github.event.head_commit.message: ${{ env.MESSAGE }}"
-          echo "head_commit=${{ env.MESSAGE }}" | sed ':a;N;$!ba;s/\n//g' >> "$GITHUB_OUTPUT"
+          echo "head_commit=${{ env.MESSAGE }}" | awk '{print $1}' >> "$GITHUB_OUTPUT"
+
+  check:
+    name: Check
+    needs: [getenv]
+    runs-on: ubuntu-latest
+    steps:
+      - name: check
+        if: "{% !contains(${{ needs.getenv.outputs.head_commit }}, 'Merge') %}"
+        run: |
+          echo "hello push"
+
+      - name: merge
+        if: "{% contains(${{ needs.getenv.outputs.head_commit }}, 'Merge') %}"
+        run: |
+          echo "hello merge"
 
   linter:
     name: Linter
     needs: [getenv]
-    if: "{% !contains(${{ needs.getenv.outputs.head_commit }}, 'Merge pull request') %}"
+    if: "{% !contains(${{ needs.getenv.outputs.head_commit }}, 'Merge') %}"
     uses: ./.github/workflows/mega-linter.yml
-    
+
   release-please:
     name: Release
-    if: "{% !contains(${{ needs.getenv.outputs.head_commit }}, 'Merge pull request') %}"
+    if: "{% !contains(${{ needs.getenv.outputs.head_commit }}, 'Merge') %}"
     runs-on: ubuntu-latest
     needs: [getenv, linter]
     steps:
