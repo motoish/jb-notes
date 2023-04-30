@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.5](https://github.com/mtngtnsh/jb-notes/compare/v1.1.4...v1.1.5) (2023-04-30)
+
+
+### Bug Fixes
+
+* needs condition ([f30104e](https://github.com/mtngtnsh/jb-notes/commit/f30104eb5bd25868632e3c499f66cabfc7ae2763))
+* permissions ([edb065a](https://github.com/mtngtnsh/jb-notes/commit/edb065ae635aa4c22b68a8709778d0d021c87feb))
+* reduce linter ([c721cfd](https://github.com/mtngtnsh/jb-notes/commit/c721cfd1cedce939446f5c96d483789c926113cf))
+* workflow condition ([aaccebd](https://github.com/mtngtnsh/jb-notes/commit/aaccebd665a44742e508a52c1f77295ddf7299d9))
+* workflow condition ([7f08d44](https://github.com/mtngtnsh/jb-notes/commit/7f08d44cf6d4c6bd46cc25d25c5a2635fb8c2e8d))
+
 ## [1.1.4](https://github.com/mtngtnsh/jb-notes/compare/v1.1.3...v1.1.4) (2023-04-30)
 
 
