@@ -22,6 +22,7 @@ permissions:
 
 jobs:
   linter:
+    name: Linter
     uses: ./.github/workflows/mega-linter.yml
 
   deploy:
