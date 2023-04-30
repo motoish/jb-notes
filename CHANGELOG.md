@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/mtngtnsh/jb-notes/compare/v1.1.3...v1.1.4) (2023-04-30)
+
+
+### Bug Fixes
+
+* reduce workflow trigger ([2bd4d01](https://github.com/mtngtnsh/jb-notes/commit/2bd4d01e7edd187179f1dc4eae37c469d9c63630))
+
 ## [1.1.3](https://github.com/mtngtnsh/jb-notes/compare/v1.1.2...v1.1.3) (2023-04-30)
 
 
