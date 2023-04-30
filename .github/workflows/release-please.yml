@@ -2,10 +2,9 @@
 name: Release
 
 on:
-  workflow_run:
-    workflows: [hangyuz.net]
-    types:
-      - completed
+  push:
+    branches:
+      - pre-main
 
 permissions:
   contents: write
