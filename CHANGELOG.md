@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.2](https://github.com/mtngtnsh/jb-notes/compare/v1.0.1...v1.0.2) (2023-04-30)
+
+
+### Bug Fixes
+
+* change release trigger ([2b93d1c](https://github.com/mtngtnsh/jb-notes/commit/2b93d1cf917560986f092e42e849ca112fa0aa4b))
+* change release trigger to workflow_run ([d49584f](https://github.com/mtngtnsh/jb-notes/commit/d49584f7658164220dde2f8a3f465cda113b493f))
+* release trigger condition ([842ba0e](https://github.com/mtngtnsh/jb-notes/commit/842ba0e27f7fa0fa298b02a33c19dcd596710c8c))
+
 ## [1.0.1](https://github.com/mtngtnsh/jb-notes/compare/v1.0.0...v1.0.1) (2023-04-30)
 
 
