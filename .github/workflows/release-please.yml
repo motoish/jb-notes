@@ -22,6 +22,21 @@ permissions:
   statuses: read
 
 jobs:
+  env:
+    name: Env
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Echo env
+        run: |
+          echo 'github.base_ref: ${{ github.base_ref }}'
+          echo 'github.ref: ${{ github.ref }}'
+          echo 'github.ref_name: ${{ github.ref_name }}'
+          echo 'github.event_name: ${{ github.event_name }}'
+          echo 'github.event: ${{ github.event.ref }}'
+          echo 'github.action_ref: ${{ github.action_ref }}'
+
   linter:
     name: Linter
     if: ${{ github.event_name == 'push' && github.head_ref == null }}
