@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.7](https://github.com/mtngtnsh/jb-notes/compare/v1.0.6...v1.0.7) (2023-04-30)
+
+
+### Bug Fixes
+
+* confirm ([7eeced1](https://github.com/mtngtnsh/jb-notes/commit/7eeced13eb16fc8855aca419e951aa580af54d9e))
+
 ## [1.0.4](https://github.com/mtngtnsh/jb-notes/compare/v1.0.3...v1.0.4) (2023-04-30)
 
 
