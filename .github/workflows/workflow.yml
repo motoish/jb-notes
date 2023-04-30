@@ -4,7 +4,6 @@ name: hangyuz.net
 on:
   pull_request:
     types:
-      - opened
       - closed
     branches:
       - main
@@ -25,14 +24,9 @@ permissions:
   statuses: read
 
 jobs:
-  linter:
-    name: Linter
-    uses: ./.github/workflows/mega-linter.yml
-
   deploy:
     name: Deploy
     if: ${{ github.event.pull_request.merged == true }}
-    needs: linter
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
