@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/mtngtnsh/jb-notes/compare/v1.1.0...v1.1.1) (2023-04-30)
+
+
+### Bug Fixes
+
+* merged condition ([02ce78d](https://github.com/mtngtnsh/jb-notes/commit/02ce78d871de61cf2cbf56918b38dd9c270b7ddf))
+
 ## [1.1.0](https://github.com/mtngtnsh/jb-notes/compare/v1.0.2...v1.1.0) (2023-04-30)
 
 
