@@ -3,7 +3,9 @@ name: hangyuz.net
 
 on:
   push:
-    branches: [main]
+    branches: 
+      - main
+      - pre-main
 
 permissions:
   actions: write
@@ -27,6 +29,7 @@ jobs:
 
   deploy:
     name: Deploy
+    if: ${{ github.base_ref == 'main' }}
     needs: linter
     runs-on: ubuntu-latest
     steps:
@@ -50,6 +53,7 @@ jobs:
 
   post:
     name: Post
+    if: ${{ github.base_ref == 'main' }}
     needs: deploy
     runs-on: ubuntu-latest
     steps:
