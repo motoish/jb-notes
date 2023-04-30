@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/mtngtnsh/jb-notes/compare/v1.0.4...v1.0.5) (2023-04-30)
+
+
+### Bug Fixes
+
+* optimized workflow ([265c1df](https://github.com/mtngtnsh/jb-notes/commit/265c1df7a0aecbfdd565feb7b999bbd023d0c34b))
+
 ## [1.0.4](https://github.com/mtngtnsh/jb-notes/compare/v1.0.3...v1.0.4) (2023-04-30)
 
 
