@@ -29,7 +29,8 @@ jobs:
 
   deploy:
     name: Deploy
-    if: ${{ github.event.pull_request.merged == true }}
+    if: ${{ github.event_name == 'pull_request' }}
+    needs: linter
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -52,7 +53,7 @@ jobs:
 
   post:
     name: Post
-    if: ${{ github.event.pull_request.merged == true }}
+    if: ${{ github.event_name == 'pull_request' }}
     needs: deploy
     runs-on: ubuntu-latest
     steps:
