@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/mtngtnsh/jb-notes/compare/v1.1.2...v1.1.3) (2023-04-30)
+
+
+### Bug Fixes
+
+* push condition ([16a393c](https://github.com/mtngtnsh/jb-notes/commit/16a393cab4519c81eca5ab13020df015bc1e31db))
+
 ## [1.1.2](https://github.com/mtngtnsh/jb-notes/compare/v1.1.1...v1.1.2) (2023-04-30)
 
 
