@@ -27,12 +27,12 @@ permissions:
 jobs:
   linter:
     name: Linter
-    if: "!contains(github.event.head_commit.message, 'Merge branch')"
+    if: "!contains(${{ github.event.head_commit.message }}, 'Merge')"
     uses: ./.github/workflows/mega-linter.yml
 
   release-please:
     name: Release
-    if: "!contains(github.event.head_commit.message, 'Merge branch')"
+    if: "!contains(${{ github.event.head_commit.message }}, 'Merge')"
     runs-on: ubuntu-latest
     needs: linter
     steps:
