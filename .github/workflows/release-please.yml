@@ -36,6 +36,8 @@ jobs:
           echo 'github.event_name: ${{ github.event_name }}'
           echo 'github.event: ${{ github.event.ref }}'
           echo 'github.action_ref: ${{ github.action_ref }}'
+          echo 'github.event_path:${{ github.event_path }}'
+          echo 'github.event.commits.message: ${{ github.event.commits.message }}'
 
   linter:
     name: Linter
