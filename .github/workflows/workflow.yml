@@ -26,12 +26,11 @@ permissions:
 jobs:
   linter:
     name: Linter
-    if: ${{ github.event_name == 'push' }}
     uses: ./.github/workflows/mega-linter.yml
 
   deploy:
     name: Deploy
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event.pull_request.merged == true }}
     needs: linter
     runs-on: ubuntu-latest
     steps:
@@ -55,7 +54,7 @@ jobs:
 
   post:
     name: Post
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event.pull_request.merged == true }}
     needs: deploy
     runs-on: ubuntu-latest
     steps:
