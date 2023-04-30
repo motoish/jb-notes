@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/mtngtnsh/jb-notes/compare/v1.0.2...v1.1.0) (2023-04-30)
+
+
+### Features
+
+* optimize job condition ([4150611](https://github.com/mtngtnsh/jb-notes/commit/41506111521a32fe5dc0aeb12834d5b0c3878793))
+
+
+### Bug Fixes
+
+* job condition ([95c48f7](https://github.com/mtngtnsh/jb-notes/commit/95c48f78e166b4b616956c4d4c69bd5a3f25c9c4))
+
 ## [1.0.2](https://github.com/mtngtnsh/jb-notes/compare/v1.0.1...v1.0.2) (2023-04-30)
 
 
