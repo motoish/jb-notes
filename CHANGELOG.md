@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.6](https://github.com/mtngtnsh/jb-notes/compare/v1.1.5...v1.1.6) (2023-04-30)
+
+
+### Bug Fixes
+
+* changelog ([8da414d](https://github.com/mtngtnsh/jb-notes/commit/8da414d05e54776b7430644d32bdd00b2d65a11e))
+* if condition ([72133a2](https://github.com/mtngtnsh/jb-notes/commit/72133a26cf301bac10c238169059cf010e9e8e26))
+* release workflow ([a1b8fa9](https://github.com/mtngtnsh/jb-notes/commit/a1b8fa9f944688de6dc6383fe9948be9145cd71a))
+* workflow ([9ab9309](https://github.com/mtngtnsh/jb-notes/commit/9ab93090a4c0eca4cbc6f99b1048c879a52d4af6))
+
 ## [1.1.4](https://github.com/mtngtnsh/jb-notes/compare/v1.1.3...v1.1.4) (2023-04-30)
 
 
