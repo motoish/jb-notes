@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.6](https://github.com/mtngtnsh/jb-notes/compare/v1.0.5...v1.0.6) (2023-05-06)
+
+
+### Bug Fixes
+
+* Add math chapter. ([d0cef02](https://github.com/mtngtnsh/jb-notes/commit/d0cef0232cb1f3da3cf038bbcb1502d7bea1b585))
+* add mention ([a61e0a3](https://github.com/mtngtnsh/jb-notes/commit/a61e0a38964f9df7a1970f3fe4b86bd1b34cadea))
+* optimized release condition ([7923e84](https://github.com/mtngtnsh/jb-notes/commit/7923e848bd7486c5e817c1b8dac10271da0a8140))
+
 ## [1.0.5](https://github.com/mtngtnsh/jb-notes/compare/v1.0.4...v1.0.5) (2023-04-30)
 
 
