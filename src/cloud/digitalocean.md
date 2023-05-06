@@ -8,14 +8,14 @@
 
 ### 1. delete these files
 
-```
+```sh
 /etc/nginx/sites-available/default
 /etc/nginx/sites-enabled/default
 ```
 
 ### 2. set up /etc/nginx/sites-available/{server_name}
   
-```
+```tex
 # ここに追記(元の設定の上) 
 server {
     listen 80;
@@ -34,7 +34,7 @@ server {
 ::: {warning}
 元の設定の下に追記してみたが、なぜかリダイレクトできなかった。
 
-```
+```tex
 # 以下は元の設定
 server {
     listen 80;

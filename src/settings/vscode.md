@@ -8,7 +8,7 @@
 
 ### install font
 
-```
+```sh
 $ brew tap homebrew/cask-fonts &&
 brew install --cask font-<Font-Name>-nerd-font
 ```
@@ -17,7 +17,7 @@ brew install --cask font-<Font-Name>-nerd-font
 
 ### settings.json
 
-```
+```json
 {
     ...
     "editor.fontFamily": "JetBrains Mono",
@@ -39,11 +39,12 @@ brew install --cask font-<Font-Name>-nerd-font
 
 [Base16 Terminal Colors for Visual Studio Code](https://glitchbone.github.io/vscode-base16-term/#/)
 
-### settings.json
+### [settings.json]
 
 ::: {note}
 :class: dropdown
-```
+
+```json
 {
     ...
     "workbench.colorCustomizations": {

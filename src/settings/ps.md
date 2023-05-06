@@ -4,13 +4,13 @@
 
 ### Preview the themes(require a Nerd Font)
 
-```
+```ps
 Get-PoshThemes
 ```
 
 ### Settings
 
-```
+```ps
 notepad $PROFILE
 ```
 
@@ -19,7 +19,7 @@ paradox がお気に入り
 
 - config file path: `~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`  
 
-```
+```ps
 # 文字化けを解決する
 [System.Console]::OutputEncoding = [System.Text.Encoding]::GetEncoding("utf-8")
 [System.Console]::InputEncoding = [System.Text.Encoding]::GetEncoding("utf-8")

@@ -8,7 +8,8 @@
 
 ::: {note}
 :class: dropdown
-```
+
+```py
 import adal
 import cryptography.x509
 import cryptography.hazmat.primitives
@@ -75,7 +76,7 @@ def create_batch_service(tenant_id, client_id, cert_path, batch_url, proxies=Non
 
 ## デモ2(Python): プールを再作成する(定期的に実行可)
 
-前提としては、再作成プールの定義ファイルは別途で用意すること。*.jsonや *.j2でも可。
+前提としては、再作成プールの定義ファイルは別途で用意すること。*.jsonや*.j2でも可。
 本でもの場合、.jsonを使用。
 
 **<<フロー>>**  
@@ -90,7 +91,8 @@ def create_batch_service(tenant_id, client_id, cert_path, batch_url, proxies=Non
 
 ::: {note}
 :class: dropdown
-```
+
+```py
 # 複数プールの場合に適応(proc_codeはプールの処理状態を表す値にセットする、本デモはその部分を省略する)
 target_pool_dict = {"p_id1": proc_code0, "p_id2": proc_code0}
 
@@ -151,7 +153,8 @@ def _resize_pools(batch_service, target_pool_dict):
 
 ::: {note}
 :class: dropdown
-```
+
+```py
 # 複数プールの場合に適応(proc_codeはプールの処理状態を表す値にセットする、本デモはその部分を省略する)
 target_pool_dict = {"p_id1": proc_code0, "p_id2": proc_code0}
 POLLING_COUNT = 5
@@ -179,7 +182,8 @@ def _resize_until_steady(batch_service, target_pool_dict):
 
 ::: {note}
 :class: dropdown
-```
+
+```py
 # 複数プールの場合に適応(proc_codeはプールの処理状態を表す値にセットする、本デモはその部分を省略する)
 target_pool_dict = {"p_id1": proc_code0, "p_id2": proc_code0}
 
@@ -199,7 +203,8 @@ def _delete_pools(batch_service, target_pool_dict):
 
 ::: {note}
 :class: dropdown
-```
+
+```py
 # 複数プールの場合に適応(proc_codeはプールの処理状態を表す値にセットする、本デモはその部分を省略する)
 # 共通の定義を'common-config'に定義、異なる部分は、プール名で分けて定義する
 target_pool_dict = {"p_id1": proc_code0, "p_id2": proc_code0}
@@ -311,7 +316,8 @@ def _format_pools_config(target_pool_dict, pool_config):
 
 ::: {note}
 :class: dropdown
-```
+
+```py
 # 複数プールの場合に適応(proc_codeはプールの処理状態を表す値にセットする、本デモはその部分を省略する)
 target_pool_dict = {"p_id1": proc_code0, "p_id2": proc_code0}
 
