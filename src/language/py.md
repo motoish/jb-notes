@@ -2,7 +2,7 @@
 
 ## delete all of the modules
 
-```
+```sh
 pip freeze > piplist.txt
 pip uninstall -r piplist.txt -y
 rm piplist.txt
@@ -51,7 +51,7 @@ def _format_strtime(st):
 
 ## remove all installed modules with pip
 
-```
+```sh
 $ pip freeze > piplist.txt
 $ pip uninstall -r piplist.txt -y
 ```

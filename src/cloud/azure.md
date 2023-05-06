@@ -121,7 +121,8 @@ def _disable_auto_scale(batch_service, target_pool_dict):
 
 ::: {note}
 :class: dropdown
-```
+
+```py
 # 複数プールの場合に適応(proc_codeはプールの処理状態を表す値にセットする、本デモはその部分を省略する)
 target_pool_dict = {"p_id1": proc_code0, "p_id2": proc_code0}
 RESIZE_NODE_NUM = 0
