@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.7](https://github.com/mtngtnsh/jb-notes/compare/v1.0.6...v1.0.7) (2023-05-06)
+
+
+### Bug Fixes
+
+* Fix title of math. ([8acc7a2](https://github.com/mtngtnsh/jb-notes/commit/8acc7a2e669ab800791800edb5185bff44aaf689))
+* Optimized Deploy job. ([27c966a](https://github.com/mtngtnsh/jb-notes/commit/27c966ad6612ac77f7689884403f384df6d577c0))
+
 ## [1.0.6](https://github.com/mtngtnsh/jb-notes/compare/v1.0.5...v1.0.6) (2023-05-06)
 
 
