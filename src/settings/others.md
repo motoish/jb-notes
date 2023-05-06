@@ -6,7 +6,7 @@
 
 Press the keys with
 
-```
+```tex
 esc --> o esc --> o esc --> b
 ```
 

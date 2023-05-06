@@ -46,7 +46,7 @@ db1, db2, db3はそれぞれ作成するのが必要。
 
 db1用のmongod.confはこの内容で設定している。
 
-```
+```tex
 systemLog:
     destination: file
     path: {usr}/data/db1/mongod.log
@@ -115,21 +115,21 @@ rs.initiate({ _id: "rs0", members: [{ _id: 0, host: "localhost:28017"},{_id: 1, 
 
 上記のコマンド叩いた結果、
 
-```
+```tex
 { "ok" : 1 }
 ```
 
 ![mongodb03-rs_initiate01](../img/mongodb03-rs_initiate01.png)
 上図から、
 
-```
+```tex
 rs0:SECONDARY>
 ```
 
 になっている。
 もう一回`Enter`すると、
 
-```
+```tex
 rs0:PRIMARY>
 ```
 

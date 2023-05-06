@@ -6,7 +6,7 @@ MongoDB+Pythonの組み合わせで、前編で述べたDBにアクセス、デ�
 
 ### 1. pymongoモジュールを導入
 
-```
+```sh
 pip install pymongo
 ```
 
@@ -14,7 +14,7 @@ pip install pymongo
 
 ### 2. アクセス方法(ローカルサーバ)
 
-```
+```sh
 mongodb://{DBサーバ(127.0.0.1)}:{ポート番号(27017)}
 ```
 
@@ -44,7 +44,7 @@ print(result)
 
 実際、_mongo_connection.pyはこのようになる。
 ![mongodb02-py05.png](../img/mongodb02-py05.png)
- _「2. アクセス方法」の最後に、注意事項で述べたことを作成する前に再現する。_
+ *「2. アクセス方法」の最後に、注意事項で述べたことを作成する前に再現する。*
 
 手動で`brew services stop mongodb-community`コマンドを叩いて実行し、エラーが返された。
 そして、`brew services restart mongodb-community`で再起動して実行した結果。  

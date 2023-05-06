@@ -10,27 +10,27 @@ parts:
   - caption: Cloud
     numbered: False
     chapters:
-      - file: src/cloud/azure01
+      - file: src/cloud/azure
       - file: src/cloud/aws
       - file: src/cloud/aws-vpc-end2end-connection
-      - file: src/cloud/digitalocean01
-      - file: src/cloud/gcp01
-      - file: src/cloud/gcp02
+      - file: src/cloud/digitalocean
+      - file: src/cloud/gcp_01
+      - file: src/cloud/gcp_02
       - file: src/cloud/cheatsheet/awsDeveloper
       - file: src/cloud/cheatsheet/awsSecurity
       - file: src/mindmap/m01-aws
   - caption: Language
     numbered: False
     chapters:
-      - file: src/language/golang01
-      - file: src/language/python
+      - file: src/language/go
+      - file: src/language/py
   - caption: DB
     numbered: False
     chapters:
-      - file: src/db/mongodb01
-      - file: src/db/mongodb02
-      - file: src/db/mongodb03
-      - file: src/db/mongodb04
+      - file: src/db/mongodb_01
+      - file: src/db/mongodb_02
+      - file: src/db/mongodb_03
+      - file: src/db/mongodb_04
       - file: src/db/mysql
   - caption: Command
     numbered: False
@@ -60,8 +60,8 @@ parts:
   - caption: Settings
     numbered: False
     chapters:
-      - file: src/settings/VSCode01
-      - file: src/settings/PowerShell01
+      - file: src/settings/vscode
+      - file: src/settings/ps
       - file: src/settings/iterm2
       - file: src/settings/alacritty
       - file: src/settings/others

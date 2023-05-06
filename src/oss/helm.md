@@ -13,7 +13,7 @@
 
 ## Install Helm
 
-```
+```sh
 $ brew install helm
 ```
 

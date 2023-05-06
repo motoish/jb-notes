@@ -25,7 +25,7 @@ INSERTする時、つねに当日(JST)、または当日から数日、数ヶ月
 
 **当日**  
 
-```
+```sql
 INSERT INTO `table_name` (colume_name) \
 VALUES (TIMESTAMPADD(HOUR,-9,CONCAT(DATE(TIMESTAMPADD(HOUR,9,NOW())),' 00:00:00')));
 ```
@@ -33,7 +33,7 @@ VALUES (TIMESTAMPADD(HOUR,-9,CONCAT(DATE(TIMESTAMPADD(HOUR,9,NOW())),' 00:00:00'
 **数日前、数か月前**  
 開始日付から減算される間隔値を指定する式は、`DAY`や`MONTH`などを使用する。1日前を例として挙げる。下の方法も同様。
 
-```
+```sql
 INSERT INTO `table_name` (colume_name) \
 VALUES (TIMESTAMPADD(HOUR,-9,CONCAT(DATE(DATE_SUB(TIMESTAMPADD(HOUR,9,NOW()),INTERVAL 1 DAY)),' 00:00:00')));
 ```
@@ -42,14 +42,14 @@ VALUES (TIMESTAMPADD(HOUR,-9,CONCAT(DATE(DATE_SUB(TIMESTAMPADD(HOUR,9,NOW()),INT
 
 **当日**  
 
-```
+```sql
 INSERT INTO `table_name` (colume_name) \
 VALUES (CONVERT_TZ(CONCAT(DATE(CONVERT_TZ(NOW(),'+00:00','+09:00')),' 00:00:00'),'+09:00','+00:00'));
 ```
 
 **数日前、数か月前**  
 
-```
+```sql
 INSERT INTO `table_name` (colume_name) \
 VALUES (CONVERT_TZ(CONCAT(DATE(DATE_SUB(CONVERT_TZ(NOW(),'+00:00','+09:00'),INTERVAL 1 DAY)),' 00:00:00'),'+09:00','+00:00'));
 ```
@@ -58,14 +58,14 @@ VALUES (CONVERT_TZ(CONCAT(DATE(DATE_SUB(CONVERT_TZ(NOW(),'+00:00','+09:00'),INTE
 
 **当日**  
 
-```
+```sql
 INSERT INTO `table_name` (colume_name) \
 VALUES (TIMESTAMPADD(HOUR,-9,DATE(TIMESTAMPADD(HOUR,9,CURRENT_DATE()))));
 ```
 
 **数日前、数か月前**  
 
-```
+```sql
 INSERT INTO `table_name` (colume_name) \
 VALUES (TIMESTAMPADD(HOUR,-9,DATE(DATE_SUB(TIMESTAMPADD(HOUR,9,CURRENT_DATE()),INTERVAL 1 DAY))));
 ```

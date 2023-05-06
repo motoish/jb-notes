@@ -18,7 +18,7 @@ xcode-select --install
 
 ::: {tip}
 :class: dropdown
-```
+```sh
 $ docker version
 Client:
  Version:           20.10.9
@@ -43,8 +43,8 @@ colima start
 
 ::: {tip}
 :class: dropdown
-```
 
+```sh
 $ brew install colima
 ==> Downloading https://ghcr.io/v2/homebrew/core/lima/manifests/0.11.0
 ######################################################################## 100.0%
@@ -89,7 +89,8 @@ INFO[0181] done
 
 ::: {tip}
 :class: dropdown
-```
+
+```sh
 $ docker version
 Client:
  Version:           20.10.9
@@ -129,13 +130,13 @@ Server:
 
 - use this command
 
-```
+```sh
 /usr/libexec/java_home -V
 ```
 
 ::: {tip}
 
-```
+```sh
 ~ /usr/libexec/java_home -V
 Matching Java Virtual Machines (1):
     17.0.1 (x86_64) "Oracle Corporation" - "OpenJDK 17.0.1" /Users/{user_name}/Library/Java/JavaVirtualMachines/openjdk-17.0.1/Contents/Home
@@ -146,7 +147,7 @@ Matching Java Virtual Machines (1):
 
 - copy the path of java_home
 
-```
+```sh
 /Users/{user_name}/Library/Java/JavaVirtualMachines/openjdk-17.0.1/
 ```
 
@@ -154,7 +155,7 @@ Matching Java Virtual Machines (1):
 
 - remove it
 
-```
+```sh
 sudo rm -rf /Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk
 ```
 
@@ -162,7 +163,7 @@ sudo rm -rf /Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk
 
 ::: {tip}
 
-```
+```sh
 ~ java -version
 The operation couldn’t be completed. Unable to locate a Java Runtime.
 Please visit http://www.java.com for information on installing Java.

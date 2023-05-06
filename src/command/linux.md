@@ -34,7 +34,7 @@ $ cat [-belnstuv] [file ...]
 
 ::: {tip}
 
-```
+```tex
 DESCRIPTION
      The cat utility reads files sequentially, writing them to the standard output.  The file operands are
      processed in command-line order.  If file is a single dash (‘-’) or absent, cat reads from the standard
@@ -78,7 +78,8 @@ $ zip -e -r {name_filedir}.zip {dir}/
 ```
 
 ::: {tip}
-```
+
+```tex
 Encryption:  
   -e        use standard (weak) PKZip 2.0 encryption, prompt for password  
   -P pswd   use standard encryption, password is pswd

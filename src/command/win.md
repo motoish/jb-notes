@@ -4,7 +4,7 @@
 
 ### 現在の文字コードを確認する
 
-```
+```cmd
 > chcp
 ```
 
@@ -19,7 +19,7 @@
 
 ### 文字コードを変更する
 
-```
+```cmd
 > chcp {identifier_code}
 ```
 
@@ -27,12 +27,12 @@
 
 ### 接続していたWiFi一覧を調べる
 
-```
+```cmd
 > netsh wlan show profiles
 ```
 
 ### PW を調べる
 
-```
+```cmd
 > netsh wlan show profiles name={SSID} key=clear
 ```

@@ -24,7 +24,7 @@ Ref: [Installing kubeadm, kubelet and kubectl](https://kubernetes.io/docs/setup/
 
 ## Delete namespace
 
-```
+```sh
 kubectl delete namespace {ns_name}
 ```
 
@@ -34,7 +34,7 @@ kubectl delete namespace {ns_name}
 
 - In one terminal:
 
-```
+```sh
 kubectl proxy
 ```
 
@@ -42,7 +42,7 @@ kubectl proxy
 
 BTW, you need install `jq`.
 
-```
+```sh
 kubectl get ns delete-me -o json | \
   jq '.spec.finalizers=[]' | \
   curl -X PUT http://localhost:8001/api/v1/namespaces/delete-me/finalize -H "Content-Type: application/json" --data @-
@@ -50,7 +50,7 @@ kubectl get ns delete-me -o json | \
 
 ### Solution#2
 
-```
+```sh
 kubectl patch ns <your_namespace> -p '{"metadata":{"finalizers":null}}'
 ```
 

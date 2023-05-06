@@ -11,7 +11,7 @@ aws elasticbeanstalk list-available-solution-stacks
 ::: {tip}
 :class: dropdown
 
-```sh
+```json
 {
     "SolutionStacks": [
         "64bit Amazon Linux 2018.03 v4.17.10 running Node.js",
