@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.8](https://github.com/mtngtnsh/jb-notes/compare/v1.0.7...v1.0.8) (2023-05-06)
+
+
+### Bug Fixes
+
+* Optimized md file, 3rd times. ([98743cf](https://github.com/mtngtnsh/jb-notes/commit/98743cfcc3f64df593bb6292da0d2b7539a41932))
+* Optimized md file, again. ([6e6d042](https://github.com/mtngtnsh/jb-notes/commit/6e6d0423a400a038896f4d3e8b630511ddf5e8cb))
+* Optimized md file. ([0521839](https://github.com/mtngtnsh/jb-notes/commit/0521839c714d814e4ff43891ac00bedd48d33f0d))
+
 ## [1.0.7](https://github.com/mtngtnsh/jb-notes/compare/v1.0.6...v1.0.7) (2023-05-06)
 
 
