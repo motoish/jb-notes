@@ -3,6 +3,10 @@ format: jb-book
 root: src/index
 
 parts:
+  - caption: Math
+    numbered: False
+    chapters:
+      - file: src/math/ref
   - caption: Cloud
     numbered: False
     chapters:
