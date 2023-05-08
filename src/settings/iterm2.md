@@ -19,6 +19,7 @@ $ source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ::: {note}
 :class: dropdown
+
 ```json
 {
   "Custom Directory" : "No",

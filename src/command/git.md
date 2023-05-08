@@ -89,6 +89,7 @@ $ git checkout {the_same_branchName_with_origin}
 ```
 
 ::: {tip} Example
+
 ```sh
 ❯ git branch
 * main
@@ -105,6 +106,7 @@ Branch 'feb' set up to track remote branch 'feb' from 'origin'.
 * feb
   main
 ```
+
 :::
 
 ## Clone

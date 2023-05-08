@@ -12,7 +12,7 @@ Learning Jupyter, and note it by Jupyter Book Community.
 
 ### Before publish your book, it needs to install the tools
 
-```pip
+```sh
 pip install -r requirements.txt
 ```
 

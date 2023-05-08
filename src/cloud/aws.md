@@ -4,7 +4,7 @@
 
 ### 1.1. Retrieve solution stack names from ListAvailableSolutionStacks API
 
-```aws
+```sh
 aws elasticbeanstalk list-available-solution-stacks
 ```
 
@@ -108,13 +108,13 @@ aws elasticbeanstalk list-available-solution-stacks
 
 #### create a new access key
 
-```aws
+```sh
 aws iam create-access-key
 ```
 
 #### configure new access key
 
-```aws
+```sh
 aws configure
 aws iam update-access-key --access-key-id {OLD_ACCESS_KEY} --status Inactive --user-name {user_name}
 aws iam update-access-key --access-key-id {NEW_ACCESS_KEY} --status Active --user-name {user_name}
@@ -125,13 +125,13 @@ aws configure list
 
 #### try to access s3 with new configuration
 
-```aws
+```sh
 aws s3 ls
 ```
 
 #### delete old access key
 
-```aws
+```sh
 aws iam delete-access-key --access-key-id {OLD_ACCESS_KEY} --user-name {user_name}
 ```
 
@@ -141,31 +141,31 @@ aws iam delete-access-key --access-key-id {OLD_ACCESS_KEY} --user-name {user_nam
 
 #### list of key pairs
 
-```aws
+```sh
 aws ec2 describe-key-pairs
 ```
 
 #### show the detail of existed key pair
 
-```aws
+```sh
 aws ec2 describe-key-pairs --key-name {KeyPair_NAME}
 ```
 
 #### delete unnecessary key pair
 
-```aws
+```sh
 aws ec2 delete-key-pair --key-name {KeyPair_NAME}
 ```
 
 ### 1.4. Get Account ID
 
-```aws
+```sh
 echo $(aws sts get-caller-identity) | awk '{print $5}' | sed -e 's/"//g' -e 's/,//g' | pbcopy
 ```
 
 ### 1.5 Get list of Amazon Linux 2 AMI ImageId
 
-```aws
+```sh
 aws ssm get-parameters-by-path --path "/aws/service/ami-amazon-linux-latest" --region us-east-1 --query 'Parameters[:].[Name,Value]' --output table
 ```
 

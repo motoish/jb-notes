@@ -2,7 +2,7 @@
 
 ## xcode系
 
-```output
+```tex
 xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
 ```
 
@@ -18,6 +18,7 @@ xcode-select --install
 
 ::: {tip}
 :class: dropdown
+
 ```sh
 $ docker version
 Client:
