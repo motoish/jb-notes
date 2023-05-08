@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.9](https://github.com/mtngtnsh/jb-notes/compare/v1.0.8...v1.0.9) (2023-05-08)
+
+
+### Bug Fixes
+
+* optimized. ([ca42e45](https://github.com/mtngtnsh/jb-notes/commit/ca42e45e4215ef0db56174ad7780185d9bcb520a))
+
 ## [1.0.8](https://github.com/mtngtnsh/jb-notes/compare/v1.0.7...v1.0.8) (2023-05-06)
 
 
