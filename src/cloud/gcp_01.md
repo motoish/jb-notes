@@ -51,11 +51,6 @@ Udemyの模擬試験問題を受験日まで繰り返し練習していこうと
 
 以下の資料は私が使われている一部のものですが、ご参考にいただければと思う。
 
-#### Udemy
-
-- [GCP Google Cloud Associate Cloud Engineer Practice Test 2020](https://www.udemy.com/course/gcp-ace-practice-tests-latest/)
-- [Google Certified Associate Cloud Engineer Certification](https://www.udemy.com/course/google-certified-associate-cloud-engineer/?aEightID=s00000016735001&a8=Qj6APjFZneIi6ek1KYIeuEhHmTg3I68THYbdFelUBdsZne6hOe6eOHChueRqCq8budrHUf6.uj6Ats00000016735001)
-
 #### Qwiklabs
 
 - [Google Cloud Essentials](https://www.qwiklabs.com/quests/23?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A1%2C%22has_search%22%3Afalse%7D)

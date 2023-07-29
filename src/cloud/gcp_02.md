@@ -43,8 +43,8 @@
 　だいたい毎日Udemyの模擬テストを繰り返しやってますが、公式模擬問題は1回しかなかった。
 
 - [公式模擬問題](https://cloud.google.com/certification/practice-exam/cloud-architect)
-- [Udemy: Google Cloud Professional Cloud Architect Practice Test](https://www.udemy.com/course/google-cloud-certified-professional-cloud-architect-practice-test/)
-- [Udemy: Google Certified Professional Cloud Architect Practice Tests](https://www.udemy.com/course/gcp-pca-practice-tests-latest/)
+- ~~[Udemy: Google Cloud Professional Cloud Architect Practice Test]~~
+- ~~[Udemy: Google Certified Professional Cloud Architect Practice Tests]~~
 
 ## 自分が足りてないところを明らかにする
 
@@ -55,8 +55,8 @@
 
 1.については短時間で補うことはできないため、2.を勉強しつつ、専門用語とかを分かるようにできたら、なんとかなると思い、2.についての本も読んでいる。
 
-- [マスタリングTCP/IP入門編](https://www.amazon.co.jp/-/en/%E4%BA%95%E4%B8%8A%E7%9B%B4%E4%B9%9F-ebook/dp/B0827QNDNT/ref=sr_1_2?crid=128B2AQORIF6L&dchild=1&keywords=%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0tcp%2Fip+%E5%85%A5%E9%96%80%E7%B7%A8&sprefix=%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%2Caps%2C307&sr=8-2)
-- [絵で見てわかるITインフラの仕組み](https://www.amazon.co.jp/-/en/%E5%B1%B1%E5%B4%8E-%E6%B3%B0%E5%8F%B2-ebook/dp/B07R21VSNC/ref=sr_1_1?crid=3P4OLBZ735368&dchild=1&keywords=%E7%B5%B5%E3%81%A7%E8%A6%8B%E3%81%A6%E3%82%8F%E3%81%8B%E3%82%8Bit%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF&sprefix=%E7%B5%B5%E3%81%A7%E8%A6%8B%E3%81%A6%E3%82%8F%E3%81%8B%E3%82%8BIT%2Caps%2C292&sr=8-1)
+- [マスタリングTCP/IP入門編](https://amzn.asia/d/iy8sPn7)
+- [絵で見てわかるITインフラの仕組み](https://amzn.asia/d/fnLMz6a)
 
 ## 最後に
 
