@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/motoish/jb-notes/compare/v1.0.9...v1.1.0) (2023-07-29)
+
+
+### Features
+
+* update repository name ([56825b4](https://github.com/motoish/jb-notes/commit/56825b48b360c2e1eed5cd0c19edbb950050722a))
+
+
+### Bug Fixes
+
+* badge url ([96f6476](https://github.com/motoish/jb-notes/commit/96f6476a644f07bf7cc0b40352dcde81cd13c01b))
+* udemy url ([15df31d](https://github.com/motoish/jb-notes/commit/15df31d352a6b0838e3fe6973c8b58bd01916181))
+* workflow name ([d4c1428](https://github.com/motoish/jb-notes/commit/d4c1428fd3e1e59e9f40dcd7e5e10caee34378dc))
+
 ## [1.0.9](https://github.com/motoish/jb-notes/compare/v1.0.8...v1.0.9) (2023-05-08)
 
 
