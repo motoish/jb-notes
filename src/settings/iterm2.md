@@ -23,7 +23,7 @@ $ source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```json
 {
   "Custom Directory" : "No",
-  "Working Directory" : "\/Users\/mtngtnsh",
+  "Working Directory" : "\/Users\/motoish",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
     "Red Component" : 0.8780597448348999,

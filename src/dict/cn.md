@@ -1,6 +1,6 @@
 ---
 title: 専門用語集-cn
-author: mtngtnsh
+author: motoish
 slide: false
 tags: Terminology
 ---

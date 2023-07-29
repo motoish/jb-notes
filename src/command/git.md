@@ -61,9 +61,9 @@ output-1:
 Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
 remote: 
 remote: Create a pull request for 'master' on GitHub by visiting:
-remote:      https://github.com/mtngtnsh/self-notes/pull/new/master
+remote:      https://github.com/motoish/self-notes/pull/new/master
 remote: 
-To github.com:mtngtnsh/self-notes.git
+To github.com:motoish/self-notes.git
  * [new branch]      master -> master
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 ```
@@ -77,7 +77,7 @@ input-2:
 output-2:
 
 ```tex
-To github.com:mtngtnsh/self-notes.git
+To github.com:motoish/self-notes.git
  - [deleted]         feature-tree
 ```
 
