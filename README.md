@@ -1,8 +1,8 @@
 # jb-notes
 
-[![main](https://github.com/mtngtnsh/jb-notes/workflows/hangyuz.net/badge.svg?branch=main)](https://github.com/mtngtnsh/jb-notes/actions?query=workflow%3Ahangyuz.net+branch%3Amain)
-[![gh-pages](https://github.com/mtngtnsh/jb-notes/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/mtngtnsh/jb-notes/actions?query=branch%3Agh-pages)
-[![Release](https://github.com/mtngtnsh/jb-notes/workflows/Release/badge.svg?branch=main)](https://github.com/mtngtnsh/jb-notes/actions?query=workflow%3ARelease+branch%3Amain)
+[![main](https://github.com/motoish/jb-notes/workflows/hangyuz.net/badge.svg?branch=main)](https://github.com/motoish/jb-notes/actions?query=workflow%3Ahangyuz.net+branch%3Amain)
+[![gh-pages](https://github.com/motoish/jb-notes/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/motoish/jb-notes/actions?query=branch%3Agh-pages)
+[![Release](https://github.com/motoish/jb-notes/workflows/Release/badge.svg?branch=main)](https://github.com/motoish/jb-notes/actions?query=workflow%3ARelease+branch%3Amain)
 
 ## Introduction
 

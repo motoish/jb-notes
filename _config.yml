@@ -10,8 +10,8 @@ only_build_toc_files: true
 html:
   favicon: "src/public/icon.png"
   use_repository_button: true
-  baseurl: "https://mtngtnsh.github.io/jb-notes/"
+  baseurl: "https://motoish.github.io/jb-notes/"
 
 repository:
-  url: "https://github.com/mtngtnsh/jb-notes/"
+  url: "https://github.com/motoish/jb-notes/"
   branch: main
