@@ -1,8 +1,8 @@
 # jb-notes
 
-[![main](https://github.com/motoish/jb-notes/workflows/motoish.com/badge.svg?branch=main)](https://github.com/motoish/jb-notes/actions/workflows/workflow.yml?query=branch%3Amain)
+[![main](https://github.com/motoish/jb-notes/workflows/motoish.com/badge.svg)](https://github.com/motoish/jb-notes/actions/workflows/workflow.yml?query=branch%3Amain)
 [![gh-pages](https://github.com/motoish/jb-notes/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/motoish/jb-notes/actions?query=branch%3Agh-pages)
-[![Release](https://github.com/motoish/jb-notes/workflows/Release/badge.svg?branch=main)](https://github.com/motoish/jb-notes/actions?query=workflow%3ARelease+branch%3Amain)
+[![Release](https://github.com/motoish/jb-notes/workflows/Release/badge.svg?branch=main)](https://github.com/motoish/jb-notes/actions/workflows/release-please.yml?query=workflow%3ARelease+branch%3Amain)
 
 ## Introduction
 
