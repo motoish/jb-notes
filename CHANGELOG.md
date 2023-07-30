@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.2.0](https://github.com/motoish/jb-notes/compare/v1.1.0...v1.2.0) (2023-07-30)
+
+
+### Features
+
+* add auto merge function ([346eabf](https://github.com/motoish/jb-notes/commit/346eabfa807de4189a6aaaafa65370597c461c72))
+
+
+### Bug Fixes
+
+* add github token ([08b6cb6](https://github.com/motoish/jb-notes/commit/08b6cb6aa8c625f270b88570f1e3a8ec10b574a6))
+* change index ([9db2a2f](https://github.com/motoish/jb-notes/commit/9db2a2f9d4fd8225a51422710e183d19fd7dec4e))
+* correct main badge ([99d0145](https://github.com/motoish/jb-notes/commit/99d0145eb1feafb50fe831c7cae10bcf4ef1a154))
+* correct permissions ([9417f91](https://github.com/motoish/jb-notes/commit/9417f911e5e1be81d4b14314faa08216cba8c0ad))
+* README.md ([4b7b8fc](https://github.com/motoish/jb-notes/commit/4b7b8fc951c3971c1f5fed34079f6302f47cebe3))
+* SC2086 ([b3fb1f4](https://github.com/motoish/jb-notes/commit/b3fb1f435ff8e825bf50bb1442fe0faee8e152d5))
+* update .gitignore ([7574b0a](https://github.com/motoish/jb-notes/commit/7574b0a9a2ca0cb09419376d3dd709836b73f207))
+* user name ([87fad93](https://github.com/motoish/jb-notes/commit/87fad93b2e008ef33749b12c4f6f02d0cb696e73))
+
 ## [1.1.0](https://github.com/motoish/jb-notes/compare/v1.0.9...v1.1.0) (2023-07-29)
 
 
