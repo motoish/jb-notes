@@ -10,14 +10,14 @@ parts:
   - caption: Cloud
     numbered: False
     chapters:
-      - file: src/cloud/azure
       - file: src/cloud/aws
       - file: src/cloud/aws-vpc-end2end-connection
-      - file: src/cloud/digitalocean
       - file: src/cloud/gcp_01
       - file: src/cloud/gcp_02
       - file: src/cloud/cheatsheet/awsDeveloper
       - file: src/cloud/cheatsheet/awsSecurity
+      - file: src/cloud/azure
+      - file: src/cloud/digitalocean
       - file: src/mindmap/m01-aws
   - caption: Language
     numbered: False
