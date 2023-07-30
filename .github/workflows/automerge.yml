@@ -1,0 +1,30 @@
+---
+name: automerge
+
+on:
+  pull_request:
+    branches:
+      - release-please--branches--main--components--jb-notes
+  schedule:
+    - cron: "0 3 1 * *"
+
+env:
+  GITHUB_USERNAME: "motoish"
+  MASTER_BRANCH: main
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check if pr exists
+        id: check-pr
+        run: |
+          echo "count=$(gh pr list -s open -B $MASTER_BRANCH | wc -l)" >> $GITHUB_OUTPUT
+
+      - name: Merge Pull Requests
+        if: ${{ steps.check-pr.outputs.count > 0 }}
+        run: |
+          gh pr merge --admin
