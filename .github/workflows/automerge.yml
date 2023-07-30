@@ -37,7 +37,7 @@ jobs:
       - name: Check if pr exists
         id: check-pr
         run: |
-          echo "count=$(gh pr list -s open -B $MASTER_BRANCH | wc -l)" >> $GITHUB_OUTPUT
+          echo "count=$(gh pr list -s open -B "$MASTER_BRANCH" | wc -l)" >> "$GITHUB_OUTPUT"
 
       - name: Merge Pull Requests
         if: ${{ steps.check-pr.outputs.count > 0 }}
