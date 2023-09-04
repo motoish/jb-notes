@@ -43,6 +43,7 @@ parts:
       - file: src/command/docker
       - file: src/command/kubernetes
       - file: src/command/ffmpeg
+      - file: src/command/vim
   - caption: OSS
     numbered: False
     chapters:
