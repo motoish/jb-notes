@@ -34,7 +34,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Check if pr exists
         id: check-pr
@@ -44,5 +44,5 @@ jobs:
       - name: Merge Pull Requests
         if: ${{ steps.check-pr.outputs.count > 0 }}
         run: |
-          gh pr checkout $MASTER_BRANCH
+          gh pr checkout "$MASTER_BRANCH"
           gh pr merge --admin
