@@ -44,4 +44,5 @@ jobs:
       - name: Merge Pull Requests
         if: ${{ steps.check-pr.outputs.count > 0 }}
         run: |
+          gh pr checkout $MASTER_BRANCH
           gh pr merge --admin
