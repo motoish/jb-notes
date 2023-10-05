@@ -6,11 +6,12 @@ on:
     branches:
       - release-please--branches--main--components--jb-notes
   schedule:
-    - cron: "15 4 * * 4"
+    - cron: "0 5 * * 4"
 
 env:
   GITHUB_USERNAME: "motoish"
-  MASTER_BRANCH: main
+  MASTER_BRANCH: "main"
+  BASE_BRANCH: "release-please--branches--main--components--jb-notes"
 
 permissions:
   actions: write
@@ -44,5 +45,5 @@ jobs:
       - name: Merge Pull Requests
         if: ${{ steps.check-pr.outputs.count > 0 }}
         run: |
-          gh pr checkout "$MASTER_BRANCH"
+          gh pr checkout "$BASE_BRANCH"
           gh pr merge --admin
