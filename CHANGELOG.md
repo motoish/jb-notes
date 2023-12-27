@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.3.0](https://github.com/motoish/jb-notes/compare/v1.2.0...v1.3.0) (2023-10-05)
+
+
+### Features
+
+* add vim ([812b141](https://github.com/motoish/jb-notes/commit/812b14199fadd7b5484dc99a8fb8c5f8de16b2ca))
+
+
+### Bug Fixes
+
+* change automerge time ([b054316](https://github.com/motoish/jb-notes/commit/b0543160a897723a5299dd16bc33b06f9c73e0c5))
+* modify automerge ([02f973d](https://github.com/motoish/jb-notes/commit/02f973d374ad1ef463340d53533042154e9c681b))
+* modify automerge cron ([7a67c27](https://github.com/motoish/jb-notes/commit/7a67c271a8087c62838e23379ff1278af9fdbdd3))
+* modify dead links ([4d8c5dd](https://github.com/motoish/jb-notes/commit/4d8c5ddcb90bf6503c78a7acff934addc00b4a4f))
+* optimize automerge ([712d3d9](https://github.com/motoish/jb-notes/commit/712d3d9a650ca1ff39bc5ed3b6eb681872c49994))
+* optimize workflow ([095e414](https://github.com/motoish/jb-notes/commit/095e41428d404c9b61dc5e65341caf1dca1bb174))
+
 ## [1.2.0](https://github.com/motoish/jb-notes/compare/v1.1.0...v1.2.0) (2023-07-30)
 
 
