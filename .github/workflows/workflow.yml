@@ -47,7 +47,7 @@ jobs:
           cd -
 
       - name: Publish GitHub Pages
-        run: ghp-import -n -p -f _build/html -c ${{ secrets.DOMAIN_DOT_NET }}
+        run: ghp-import -n -p -f _build/html
 
   post:
     name: Post
