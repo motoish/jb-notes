@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.1](https://github.com/motoish/jb-notes/compare/v1.3.0...v1.3.1) (2024-08-02)
+
+
+### Bug Fixes
+
+* correct permissions of release-please ([6e24309](https://github.com/motoish/jb-notes/commit/6e24309951cc706f8428a074aab25483885da3b8))
+* modify .mega-linter.yml ([129dab1](https://github.com/motoish/jb-notes/commit/129dab10d03540509cb89d64f51dd8b44ffa02ba))
+* modify copyright ([24fb08c](https://github.com/motoish/jb-notes/commit/24fb08c6f387a216c9d3943782ff57117cc77b9a))
+* remove individual domain ([5169120](https://github.com/motoish/jb-notes/commit/5169120641a16bd724ad8fca38216325783fcdd2))
+* remove schedule of auto-merge ([86a011a](https://github.com/motoish/jb-notes/commit/86a011ac7bd02e2e35f24c35abe90ba5f2176f9a))
+* update link of vuepress ([4482318](https://github.com/motoish/jb-notes/commit/44823182374fd46421709dc32aff70a700c1339f))
+
 ## [1.3.0](https://github.com/motoish/jb-notes/compare/v1.2.0...v1.3.0) (2023-10-05)
 
 
