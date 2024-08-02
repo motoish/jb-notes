@@ -10,7 +10,7 @@
 
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
 - [Vite](https://vitejs.dev/guide/)
-- [VuePress - Default theme](https://v2.vuepress.vuejs.org/reference/default-theme/config.html)
+- [VuePress - Default theme](https://ecosystem.vuejs.press/themes/default/config.html)
 - [Vue.js(v3.x)](https://v3.ja.vuejs.org/guide/introduction.html)
 - [React Docs](https://ja.reactjs.org/docs/getting-started.html)
 
