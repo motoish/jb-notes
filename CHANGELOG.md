@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.2](https://github.com/motoish/jb-notes/compare/v1.3.1...v1.3.2) (2024-08-08)
+
+
+### Bug Fixes
+
+* remove badge of motoish.com ([a7412ef](https://github.com/motoish/jb-notes/commit/a7412efc9d5bce1dde6a57affff7ea9e93340f0d))
+* upgrade uses clause ([b7495f4](https://github.com/motoish/jb-notes/commit/b7495f44a49aebaf3d98f2dd2b552bb46d20b32a))
+
 ## [1.3.1](https://github.com/motoish/jb-notes/compare/v1.3.0...v1.3.1) (2024-08-02)
 
 
