@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/motoish/jb-notes/compare/v1.3.2...v1.3.3) (2024-08-13)
+
+
+### Bug Fixes
+
+* change release repository ([b580331](https://github.com/motoish/jb-notes/commit/b580331fb666ea2de3d3202ec723e5e3a3e5dfda))
+
 ## [1.3.2](https://github.com/motoish/jb-notes/compare/v1.3.1...v1.3.2) (2024-08-08)
 
 
