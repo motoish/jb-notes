@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4](https://github.com/motoish/jb-notes/compare/v1.3.3...v1.3.4) (2024-08-21)
+
+
+### Bug Fixes
+
+* remove dead link ([bbce712](https://github.com/motoish/jb-notes/commit/bbce71299f6d61e190bd81ac3f1b2de44c26d04c))
+
 ## [1.3.3](https://github.com/motoish/jb-notes/compare/v1.3.2...v1.3.3) (2024-08-13)
 
 
