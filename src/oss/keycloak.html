@@ -1,0 +1,1287 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>midPoint + Keycloack + GitLab &#8212; Yuan&#39;s notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/oss/keycloak';</script>
+    <link rel="canonical" href="https://motoish.github.io/jb-notes/src/oss/keycloak.html" />
+    <link rel="icon" href="../../_static/icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="portainer" href="portainer.html" />
+    <link rel="prev" title="midPoint" href="midpoint.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Yuan's notes</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    落穂拾い
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Math</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../math/ref.html">Reference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cloud/aws.html">AWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/aws-vpc-end2end-connection.html">AWS - How to implement end to end VPC Endpoint service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/gcp_01.html">GCP - Associate Cloud Engineer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/gcp_02.html">GCP - Professional Cloud Architect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/cheatsheet/awsDeveloper.html">+ CheatSheet - AWS Developer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/cheatsheet/awsSecurity.html">+ CheatSheet - AWS Security Specialty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/azure.html">Azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/digitalocean.html">DigitalOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mindmap/m01-aws.html">+ MindMap-AWS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Language</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../language/go.html">Golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/py.html">Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DB</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../db/mongodb_01.html">MongoDB - Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/mongodb_02.html">MongoDB - Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/mongodb_03.html">MongoDB - Replication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/mongodb_04.html">MongoDB - Sharding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/mysql.html">MySQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Command</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../command/mac.html">MacOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/win.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/github-cli.html">GitHub CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/kubernetes.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/ffmpeg.html">FFmpeg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/vim.html">Vim</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OSS</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="kasm.html">Kasm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="midpoint.html">midPoint</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">midPoint + Keycloack + GitLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portainer.html">portainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helm.html">Helm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kafka.html">Kafka</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dictionary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../dict/en.html">Dict-en</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dict/ja.html">Dict-ja</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Settings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../settings/vscode.html">VSCode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../settings/ps.html">PowerShell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../settings/iterm2.html">iTerm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../settings/alacritty.html">Alacritty_Config: alacritty.yml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../settings/others.html">Others</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/intr.html">tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/inde.html">useful links</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/motoish/jb-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/src/oss/keycloak.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>midPoint + Keycloack + GitLab</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-keycloak-settings">1. About keycloak settings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-keycloak-with-docker">1) Starting Keycloak with docker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note-the-rs256-certification-of-master-realm">2) Note the RS256 certification of master realm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gitlab-client-and-modify-settings">3) Create GitLab client and modify settings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-mappers">4) Modify mappers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-gitlab-settings">2. About GitLab settings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitlab-config-yaml">1) GitLab config yaml</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose-f-xxx-yml-up-d">2) docker-compose -f xxx.yml up -d</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-midpoint-settings">3. About midPoint settings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#midpoint-config-yaml">1) midPoint  config yaml</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-keycloak-connector-and-place-to-midpoint-home-directory">2) Download Keycloak connector and place to midPoint home directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#midpoint-keycloak">3) midpoint + keycloak</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">4. Appendix</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="midpoint-keycloack-gitlab">
+<h1>midPoint + Keycloack + GitLab<a class="headerlink" href="#midpoint-keycloack-gitlab" title="Link to this heading">#</a></h1>
+<section id="about-keycloak-settings">
+<h2>1. About keycloak settings<a class="headerlink" href="#about-keycloak-settings" title="Link to this heading">#</a></h2>
+<section id="starting-keycloak-with-docker">
+<h3>1) Starting Keycloak with docker<a class="headerlink" href="#starting-keycloak-with-docker" title="Link to this heading">#</a></h3>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-e<span class="w"> </span><span class="nv">KEYCLOAK_USER</span><span class="o">=</span>admin<span class="w"> </span>-e<span class="w"> </span><span class="nv">KEYCLOAK_PASSWORD</span><span class="o">=</span>admin<span class="w"> </span>quay.io/keycloak/keycloak:16.1.0
+</pre></div>
+</div>
+</section>
+<section id="note-the-rs256-certification-of-master-realm">
+<h3>2) Note the RS256 certification of master realm<a class="headerlink" href="#note-the-rs256-certification-of-master-realm" title="Link to this heading">#</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>-----BEGIN CERTIFICATE-----
+MIICmzCCAYMCBgF94oc1+TANBgkqhkiG9w0BAQsFADARMQ8wDQYDVQQDDAZtYXN0ZXIwHhcNMjExMjIyMTQyMjMxWhcNMzExMjIyMTQyNDExWjARMQ8wDQYDVQQDDAZtYXN0ZXIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCfhUTZIhyOTtDkc5qWuJArk103NniXbPs21BdA+1Bs0/RqgbaKASt9CP7MigS/yvx4CuM5AoWM813Kd6IUP18aCJ55u28NUI6G7DfU42SV7qqp5yvn+Wf24Kjvd5pJz6079wI/3Eqd/yUnXPv43BBfb9CvJKSLWds51YKaGwT1FbYZYtb0D1NZg5a24YAFfG7RVl1SAZW6eimXPLgUiUMHOJlVgUPw+PFklEVbVTJMI8Iiy9EzDG6kenn3LZ9mndxtSY4cBMzrf0fKX/FUdEdoicnD2Fb3TQL9BL4McvUMdg60DVRL5106tkvQajCoQFAxfIlQO/DhpGXvSZ7+2IMlAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAISGthr3+kCe++JA1PVqhYkpNhF+EQflTe9iOq/EBJNtAZOV5FsIUx7BEOPKqeZwSseEgUsR/b33Ks7+TIeBC1nnHgvVr7wSBqRr/tN7EXXrWLPWtQOshizSezj2bJASEHOkMRl31WnHFhnN49eknxYH5PCLrYdeOxG4ICbd35EgZHMtaeIDB2NCYZvZAHq9m6mtqpI8e8AC+OtDHAupQZ33I8k/aegB1Z0NG+W6t3t1e7ywsuRN+ujQqMFMDRkgdGS/L2gZI/UmiP/biWGcpvK5qora+We/fkTbKYET8LZogjnYNgMkcTMVO2wODDXZviFjPTJp331pd7iMFtllQKs=
+-----END CERTIFICATE-----
+</pre></div>
+</div>
+</section>
+<section id="create-gitlab-client-and-modify-settings">
+<h3>3) Create GitLab client and modify settings<a class="headerlink" href="#create-gitlab-client-and-modify-settings" title="Link to this heading">#</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Client ID: localhost:8929
+Name: gitlab
+Enabled: ON
+Client Protocol: saml
+Include AuthStatement: ON
+Sign Documents: ON
+Signature Algorithm: RSA_SHA256
+SAML Signature Key Name: KEY_ID
+Canonicalization Method: EXCLUSIVE
+Force POST Binding: ON
+Front Channel Logout: ON
+Name ID Format: persistent
+Root URL: http://localhost:8929
+Valid Redirect URL: http://localhost:8929/*
+Base URL: /
+Master SAML Processing URL: http://localhost:8929/users/auth/saml/callback
+IDP Initiated SSO URL Name: http://localhost:8929
+Assertion Consumer Service POST Binding URL: http://localhost:8929/users/auth/saml/callback
+</pre></div>
+</div>
+<p><img alt="key_settings_1" src="../../_images/key_settings_1.png" /></p>
+<p><img alt="key_settings_2" src="../../_images/key_settings_2.png" /></p>
+</section>
+<section id="modify-mappers">
+<h3>4) Modify mappers<a class="headerlink" href="#modify-mappers" title="Link to this heading">#</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    Email
+        Name：email
+        Mapper Property：User Property
+        Property：Email
+        Friendly Name：Email
+        SAML Attribute Name：email
+        SAML Attribute NameFormat：Basic
+    First_Name
+        Name：first_name
+        Mapper Property：User Property
+        Property：FirstName
+        Friendly Name：First Name
+        SAML Attribute Name：first_name
+        SAML Attribute NameFormat：Basic
+    Last_Name
+        Name：last_name
+        Mapper Property：User Property
+        Property：LastName
+        Friendly Name：Last Name
+        SAML Attribute Name：name
+        SAML Attribute NameFormat：Basic
+    Username
+        Name：username
+        Mapper Property：User Property
+        Property：UserName
+        Friendly Name：User Name
+        SAML Attribute Name：name
+        SAML Attribute NameFormat：Basic
+    Roles
+        Name：roles
+        Mapper Property：Role List
+        Role attribute name：roles
+        Friendly Name：Roles
+        SAML Attribute NameFormat：Basic
+        Single Role Attribute：ON
+</pre></div>
+</div>
+<p><img alt="key_settings_3" src="../../_images/key_settings_3.png" /></p>
+</section>
+</section>
+<section id="about-gitlab-settings">
+<h2>2. About GitLab settings<a class="headerlink" href="#about-gitlab-settings" title="Link to this heading">#</a></h2>
+<p>Ref:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://hub.docker.com/r/gitlab/gitlab-ce/tags">gitlab-ce Dockerhub tags</a></p></li>
+<li><p><a class="reference external" href="https://qiita.com/ymasaoka/items/482a92cb7898c1b53e7c">GitLab Mattermost でダブルSSOしてみた</a></p></li>
+<li><p><a class="reference external" href="https://qiita.com/myoshimi/items/37c90c2a63dca295edb4">シングルサインオンサービスKeycloakとGitLabを連携する</a></p></li>
+</ul>
+<p><strong>TODO</strong>:gitlabのログインアカウントPWをymlでセットするように</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># openssl x509 -sha1 -fingerprint -noout -in gitlab-sso.pem</span>
+</pre></div>
+</div>
+<section id="gitlab-config-yaml">
+<h3>1) GitLab config yaml<a class="headerlink" href="#gitlab-config-yaml" title="Link to this heading">#</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.8&#39;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">web</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;gitlab/gitlab-ce:14.5.2-ce.0&#39;</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">GITLAB_OMNIBUS_CONFIG</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">external_url &#39;http://localhost:8929&#39;</span>
+<span class="w">        </span><span class="no">gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 2224</span>
+<span class="w">        </span><span class="no">mattermost_external_url &#39;http://localhost:8001&#39;</span>
+<span class="w">        </span><span class="no">gitlab_rails[&#39;omniauth_enabled&#39;] = true</span>
+<span class="w">        </span><span class="no">gitlab_rails[&#39;omniauth_allow_single_sign_on&#39;] = [&#39;saml&#39;]</span>
+<span class="w">        </span><span class="no">gitlab_rails[&#39;omniauth_block_auto_created_users&#39;] = false</span>
+<span class="w">        </span><span class="no">gitlab_rails[&#39;omniauth_auto_link_saml_user&#39;] = true</span>
+<span class="w">        </span><span class="no">gitlab_rails[&#39;omniauth_providers&#39;] = [</span>
+<span class="w">          </span><span class="no">{</span>
+<span class="w">            </span><span class="no">name: &#39;saml&#39;,</span>
+<span class="w">            </span><span class="no">label: &#39;Keycloak Login&#39;,</span>
+<span class="w">            </span><span class="no">groups_attribute: &#39;roles&#39;,</span>
+<span class="w">            </span><span class="no">args: {</span>
+<span class="w">              </span><span class="no">assertion_consumer_service_url: &#39;http://localhost:8929/users/auth/saml/callback&#39;,</span>
+<span class="w">              </span><span class="no">idp_sso_target_url: &#39;http://localhost:8080/auth/realms/master/protocol/saml&#39;,</span>
+<span class="w">              </span><span class="no">issuer: &#39;localhost:8929&#39;,</span>
+<span class="w">              </span><span class="no">idp_cert: &#39;-----BEGIN CERTIFICATE-----</span>
+<span class="w">                </span><span class="no">MIICmzCCAYMCBgF94oc1+TANBgkqhkiG9w0BAQsFADARMQ8wDQYDVQQDDAZtYXN0ZXIwHhcNMjExMjIyMTQyMjMxWhcNMzExMjIyMTQyNDExWjARMQ8wDQYDVQQDDAZtYXN0ZXIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCfhUTZIhyOTtDkc5qWuJArk103NniXbPs21BdA+1Bs0/RqgbaKASt9CP7MigS/yvx4CuM5AoWM813Kd6IUP18aCJ55u28NUI6G7DfU42SV7qqp5yvn+Wf24Kjvd5pJz6079wI/3Eqd/yUnXPv43BBfb9CvJKSLWds51YKaGwT1FbYZYtb0D1NZg5a24YAFfG7RVl1SAZW6eimXPLgUiUMHOJlVgUPw+PFklEVbVTJMI8Iiy9EzDG6kenn3LZ9mndxtSY4cBMzrf0fKX/FUdEdoicnD2Fb3TQL9BL4McvUMdg60DVRL5106tkvQajCoQFAxfIlQO/DhpGXvSZ7+2IMlAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAISGthr3+kCe++JA1PVqhYkpNhF+EQflTe9iOq/EBJNtAZOV5FsIUx7BEOPKqeZwSseEgUsR/b33Ks7+TIeBC1nnHgvVr7wSBqRr/tN7EXXrWLPWtQOshizSezj2bJASEHOkMRl31WnHFhnN49eknxYH5PCLrYdeOxG4ICbd35EgZHMtaeIDB2NCYZvZAHq9m6mtqpI8e8AC+OtDHAupQZ33I8k/aegB1Z0NG+W6t3t1e7ywsuRN+ujQqMFMDRkgdGS/L2gZI/UmiP/biWGcpvK5qora+We/fkTbKYET8LZogjnYNgMkcTMVO2wODDXZviFjPTJp331pd7iMFtllQKs= </span>
+<span class="w">                </span><span class="no">-----END CERTIFICATE-----&#39;,</span>
+<span class="w">              </span><span class="no">name_identifier_format: &#39;urn:oasis:names:tc:SAML:2.0:nameid-format:persistent&#39;,</span>
+<span class="w">              </span><span class="no">attribute_statements: {</span>
+<span class="w">                </span><span class="no">first_name: [&#39;first_name&#39;],</span>
+<span class="w">                </span><span class="no">last_name: [&#39;last_name&#39;],</span>
+<span class="w">                </span><span class="no">username: [&#39;name&#39;],</span>
+<span class="w">                </span><span class="no">email: [&#39;email&#39;]</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">            </span><span class="no">}</span>
+<span class="w">          </span><span class="no">}</span>
+<span class="w">        </span><span class="no">]</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;8001:8001&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;2224:22&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;8929:8929&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;10080:80&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;10443:443&#39;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gitlab_config:/etc/gitlab</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gitlab_logs:/var/log/gitlab</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gitlab_data:/var/opt/gitlab</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gitlab_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gitlab_logs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gitlab_data</span><span class="p">:</span>
+</pre></div>
+</div>
+</section>
+<section id="docker-compose-f-xxx-yml-up-d">
+<h3>2) docker-compose -f xxx.yml up -d<a class="headerlink" href="#docker-compose-f-xxx-yml-up-d" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="about-midpoint-settings">
+<h2>3. About midPoint settings<a class="headerlink" href="#about-midpoint-settings" title="Link to this heading">#</a></h2>
+<section id="midpoint-config-yaml">
+<h3>1) midPoint  config yaml<a class="headerlink" href="#midpoint-config-yaml" title="Link to this heading">#</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">midpoint</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evolveum/midpoint:${MP_VERSION:-4.4}-alpine</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">midpoint-4.4</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;7001:8080&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">midpoint_home:/opt/midpoint/var</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">midpoint_home</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">midpoint-4.4</span>
+</pre></div>
+</div>
+</section>
+<section id="download-keycloak-connector-and-place-to-midpoint-home-directory">
+<h3>2) Download Keycloak connector and place to midPoint home directory<a class="headerlink" href="#download-keycloak-connector-and-place-to-midpoint-home-directory" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/openstandia/connector-keycloak/releases">keycloak connector Github release</a></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-LO<span class="w"> </span><span class="s2">&quot;https://search.maven.org/remotecontent?filepath=jp/openstandia/connector/connector-keycloak/1.1.2/connector-keycloak-1.1.2.jar&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>cp<span class="w"> </span>connector-keycloak-1.1.2.jar<span class="w"> </span>midpoint-4.4:/opt/midpoint/var/icf-connectors
+</pre></div>
+</div>
+</section>
+<section id="midpoint-keycloak">
+<h3>3) midpoint + keycloak<a class="headerlink" href="#midpoint-keycloak" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qiita.com/wadahiro/items/ec4ccf18d6fa14e215c4">KeycloakとmidPointを連携させてみよう(connector-keycloak編)</a></p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;resource</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/common/common-3&quot;</span><span class="w"> </span><span class="na">xmlns:c=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/common/common-3&quot;</span><span class="w"> </span><span class="na">xmlns:icfs=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3&quot;</span><span class="w"> </span><span class="na">xmlns:org=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/common/org-3&quot;</span><span class="w"> </span><span class="na">xmlns:q=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/query-3&quot;</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="w"> </span><span class="na">xmlns:t=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/types-3&quot;</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">oid=</span><span class="s">&quot;d8fca210-c37c-4080-b497-8d19ec09f83e&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;20&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>keycloak<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;metadata&gt;</span>
+<span class="w">        </span><span class="nt">&lt;modifyTimestamp&gt;</span>2021-12-23T02:12:54.417Z<span class="nt">&lt;/modifyTimestamp&gt;</span>
+<span class="w">        </span><span class="nt">&lt;modifierRef</span><span class="w"> </span><span class="na">oid=</span><span class="s">&quot;00000000-0000-0000-0000-000000000002&quot;</span><span class="w"> </span><span class="na">relation=</span><span class="s">&quot;org:default&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;c:UserType&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="cm">&lt;!-- administrator --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/modifierRef&gt;</span>
+<span class="w">        </span><span class="nt">&lt;modifyChannel&gt;</span>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user<span class="nt">&lt;/modifyChannel&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/metadata&gt;</span>
+<span class="w">    </span><span class="nt">&lt;iteration&gt;</span>0<span class="nt">&lt;/iteration&gt;</span>
+<span class="w">    </span><span class="nt">&lt;connectorRef</span><span class="w"> </span><span class="na">oid=</span><span class="s">&quot;b1764267-a0d3-473e-ab05-f0950817d157&quot;</span><span class="w"> </span><span class="na">relation=</span><span class="s">&quot;org:default&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;c:ConnectorType&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- ConnId jp.openstandia.connector.keycloak.KeycloakConnector v1.1.2 --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/connectorRef&gt;</span>
+<span class="w">    </span><span class="nt">&lt;connectorConfiguration</span><span class="w"> </span><span class="na">xmlns:icfc=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;icfc:configurationProperties</span><span class="w"> </span><span class="na">xmlns:gen364=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/jp.openstandia.connector.connector-keycloak/jp.openstandia.connector.keycloak.KeycloakConnector&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gen364:serverUrl&gt;</span>http://192.168.3.24:8080/auth<span class="nt">&lt;/gen364:serverUrl&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gen364:username&gt;</span>admin<span class="nt">&lt;/gen364:username&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gen364:password&gt;</span>
+<span class="w">                </span><span class="nt">&lt;t:encryptedData&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;t:encryptionMethod&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;t:algorithm&gt;</span>http://www.w3.org/2001/04/xmlenc#aes256-cbc<span class="nt">&lt;/t:algorithm&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/t:encryptionMethod&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;t:keyInfo&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;t:keyName&gt;</span>rp167H4HSYaULZBMtyjWcrHNioM=<span class="nt">&lt;/t:keyName&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/t:keyInfo&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;t:cipherData&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;t:cipherValue&gt;</span>zB/9nKzuL86t8GKCizb8mdcXX4mDDWWBj/MYveTU5hs=<span class="nt">&lt;/t:cipherValue&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/t:cipherData&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/t:encryptedData&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gen364:password&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gen364:clientId&gt;</span>admin-cli<span class="nt">&lt;/gen364:clientId&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gen364:realmName&gt;</span>master<span class="nt">&lt;/gen364:realmName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gen364:targetRealmName&gt;</span>master<span class="nt">&lt;/gen364:targetRealmName&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/icfc:configurationProperties&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/connectorConfiguration&gt;</span>
+<span class="w">    </span><span class="nt">&lt;schema&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cachingMetadata&gt;</span>
+<span class="w">            </span><span class="nt">&lt;retrievalTimestamp&gt;</span>2021-12-23T01:48:28.044Z<span class="nt">&lt;/retrievalTimestamp&gt;</span>
+<span class="w">            </span><span class="nt">&lt;serialNumber&gt;</span>581360d3ad0f8e1-1d73b96a7401f895<span class="nt">&lt;/serialNumber&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/cachingMetadata&gt;</span>
+<span class="w">        </span><span class="nt">&lt;definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xsd:schema</span><span class="w"> </span><span class="na">xmlns:xsd=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="w"> </span><span class="na">xmlns:a=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/annotation-3&quot;</span><span class="w"> </span><span class="na">xmlns:ra=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/annotation-3&quot;</span><span class="w"> </span><span class="na">xmlns:tns=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="w"> </span><span class="na">elementFormDefault=</span><span class="s">&quot;qualified&quot;</span><span class="w"> </span><span class="na">targetNamespace=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="w"> </span><span class="na">xmlns:t=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/types-3&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;xsd:import</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/types-3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;xsd:import</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/annotation-3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;xsd:import</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/annotation-3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;group&quot;</span><span class="nt">&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:resourceObject/&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:identifier</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:groupId<span class="nt">&lt;/ra:identifier&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:secondaryIdentifier</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:name<span class="nt">&lt;/ra:secondaryIdentifier&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:displayNameAttribute</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:name<span class="nt">&lt;/ra:displayNameAttribute&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:namingAttribute</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:name<span class="nt">&lt;/ra:namingAttribute&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:nativeObjectClass&gt;</span>group<span class="nt">&lt;/ra:nativeObjectClass&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>120<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:access&gt;</span>read<span class="nt">&lt;/a:access&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:matchingRule</span><span class="w"> </span><span class="na">xmlns:qn24=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/matching-rule-3&quot;</span><span class="nt">&gt;</span>qn24:stringIgnoreCase<span class="nt">&lt;/a:matchingRule&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>path<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;parentGroup&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>130<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>parentGroup<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:returnedByDefault&gt;</span>false<span class="nt">&lt;/ra:returnedByDefault&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>110<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:matchingRule</span><span class="w"> </span><span class="na">xmlns:qn955=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/matching-rule-3&quot;</span><span class="nt">&gt;</span>qn955:stringIgnoreCase<span class="nt">&lt;/a:matchingRule&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:nativeAttributeName&gt;</span>name<span class="nt">&lt;/ra:nativeAttributeName&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>__NAME__<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;groupId&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>100<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:access&gt;</span>read<span class="nt">&lt;/a:access&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:nativeAttributeName&gt;</span>groupId<span class="nt">&lt;/ra:nativeAttributeName&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>__UID__<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/xsd:complexType&gt;</span>
+<span class="w">                </span><span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;user&quot;</span><span class="nt">&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:resourceObject/&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:identifier</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:userId<span class="nt">&lt;/ra:identifier&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:secondaryIdentifier</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:username<span class="nt">&lt;/ra:secondaryIdentifier&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:displayNameAttribute</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:username<span class="nt">&lt;/ra:displayNameAttribute&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:namingAttribute</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:username<span class="nt">&lt;/ra:namingAttribute&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:nativeObjectClass&gt;</span>user<span class="nt">&lt;/ra:nativeObjectClass&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;groups&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>120<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>groups<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:returnedByDefault&gt;</span>false<span class="nt">&lt;/ra:returnedByDefault&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lastName&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>130<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>lastName<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;firstName&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>140<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>firstName<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;username&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>110<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:matchingRule</span><span class="w"> </span><span class="na">xmlns:qn285=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/matching-rule-3&quot;</span><span class="nt">&gt;</span>qn285:stringIgnoreCase<span class="nt">&lt;/a:matchingRule&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:nativeAttributeName&gt;</span>username<span class="nt">&lt;/ra:nativeAttributeName&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>__NAME__<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;createdTimestamp&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:dateTime&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>150<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:access&gt;</span>read<span class="nt">&lt;/a:access&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>createdTimestamp<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;email&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>160<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:matchingRule</span><span class="w"> </span><span class="na">xmlns:qn371=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/matching-rule-3&quot;</span><span class="nt">&gt;</span>qn371:stringIgnoreCase<span class="nt">&lt;/a:matchingRule&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>email<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;emailVerified&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:boolean&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>170<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>emailVerified<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;userId&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>100<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:access&gt;</span>read<span class="nt">&lt;/a:access&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:nativeAttributeName&gt;</span>userId<span class="nt">&lt;/ra:nativeAttributeName&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>__UID__<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/xsd:complexType&gt;</span>
+<span class="w">                </span><span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;clientRole&quot;</span><span class="nt">&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:resourceObject/&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:identifier</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:clientRoleId<span class="nt">&lt;/ra:identifier&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:secondaryIdentifier</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:name<span class="nt">&lt;/ra:secondaryIdentifier&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:displayNameAttribute</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:name<span class="nt">&lt;/ra:displayNameAttribute&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:namingAttribute</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:name<span class="nt">&lt;/ra:namingAttribute&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:nativeObjectClass&gt;</span>clientRole<span class="nt">&lt;/ra:nativeObjectClass&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;attributes&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>120<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>attributes<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;description&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>130<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>description<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>110<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:matchingRule</span><span class="w"> </span><span class="na">xmlns:qn16=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/matching-rule-3&quot;</span><span class="nt">&gt;</span>qn16:stringIgnoreCase<span class="nt">&lt;/a:matchingRule&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:nativeAttributeName&gt;</span>name<span class="nt">&lt;/ra:nativeAttributeName&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>__NAME__<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;clientRoleId&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>100<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:access&gt;</span>read<span class="nt">&lt;/a:access&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:nativeAttributeName&gt;</span>clientRoleId<span class="nt">&lt;/ra:nativeAttributeName&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>__UID__<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/xsd:complexType&gt;</span>
+<span class="w">                </span><span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;client&quot;</span><span class="nt">&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:resourceObject/&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:identifier</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:clientUUID<span class="nt">&lt;/ra:identifier&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:secondaryIdentifier</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:clientId<span class="nt">&lt;/ra:secondaryIdentifier&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:displayNameAttribute</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:clientId<span class="nt">&lt;/ra:displayNameAttribute&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:namingAttribute</span><span class="w"> </span><span class="na">xmlns:ri=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/instance-3&quot;</span><span class="nt">&gt;</span>ri:clientId<span class="nt">&lt;/ra:namingAttribute&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;ra:nativeObjectClass&gt;</span>client<span class="nt">&lt;/ra:nativeObjectClass&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;attributes&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>120<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>attributes<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;serviceAccountsEnabled&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:boolean&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>130<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>serviceAccountsEnabled<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;adminUrl&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>140<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>adminUrl<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rootUrl&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>150<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>rootUrl<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;publicClient&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:boolean&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>160<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>publicClient<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;baseUrl&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>170<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>baseUrl<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;authorizationServicesEnabled&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:boolean&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>180<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>authorizationServicesEnabled<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;directAccessGrantsEnabled&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:boolean&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>190<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>directAccessGrantsEnabled<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;protocol&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>200<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:access&gt;</span>create<span class="nt">&lt;/a:access&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:access&gt;</span>read<span class="nt">&lt;/a:access&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>protocol<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;webOrigins&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>210<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>webOrigins<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>220<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>name<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;origin&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>230<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>origin<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;standardFlowEnabled&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:boolean&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>240<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>standardFlowEnabled<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;description&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>250<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>description<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;redirectUris&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>260<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>redirectUris<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;implicitFlowEnabled&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:boolean&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>270<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>implicitFlowEnabled<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;clientId&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>110<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:matchingRule</span><span class="w"> </span><span class="na">xmlns:qn495=</span><span class="s">&quot;http://prism.evolveum.com/xml/ns/public/matching-rule-3&quot;</span><span class="nt">&gt;</span>qn495:stringIgnoreCase<span class="nt">&lt;/a:matchingRule&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:nativeAttributeName&gt;</span>clientId<span class="nt">&lt;/ra:nativeAttributeName&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>__NAME__<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;secret&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;t:ProtectedStringType&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>280<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>secret<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bearerOnly&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:boolean&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>290<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>bearerOnly<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;clientUUID&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;xsd:annotation&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;xsd:appinfo&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:displayOrder&gt;</span>100<span class="nt">&lt;/a:displayOrder&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;a:access&gt;</span>read<span class="nt">&lt;/a:access&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:nativeAttributeName&gt;</span>clientUUID<span class="nt">&lt;/ra:nativeAttributeName&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;ra:frameworkAttributeName&gt;</span>__UID__<span class="nt">&lt;/ra:frameworkAttributeName&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;/xsd:appinfo&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/xsd:annotation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xsd:element&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/xsd:complexType&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/xsd:schema&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/definition&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/schema&gt;</span>
+<span class="w">    </span><span class="nt">&lt;schemaHandling&gt;</span>
+<span class="w">        </span><span class="nt">&lt;objectType</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;11&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;kind&gt;</span>account<span class="nt">&lt;/kind&gt;</span>
+<span class="w">            </span><span class="nt">&lt;intent&gt;</span>default<span class="nt">&lt;/intent&gt;</span>
+<span class="w">            </span><span class="nt">&lt;displayName&gt;</span>user<span class="nt">&lt;/displayName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;default&gt;</span>true<span class="nt">&lt;/default&gt;</span>
+<span class="w">            </span><span class="nt">&lt;objectClass&gt;</span>ri:user<span class="nt">&lt;/objectClass&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;12&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ref&gt;</span>ri:email<span class="nt">&lt;/ref&gt;</span>
+<span class="w">                </span><span class="nt">&lt;tolerant&gt;</span>true<span class="nt">&lt;/tolerant&gt;</span>
+<span class="w">                </span><span class="nt">&lt;exclusiveStrong&gt;</span>false<span class="nt">&lt;/exclusiveStrong&gt;</span>
+<span class="w">                </span><span class="nt">&lt;outbound&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;authoritative&gt;</span>true<span class="nt">&lt;/authoritative&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;exclusive&gt;</span>false<span class="nt">&lt;/exclusive&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;strength&gt;</span>strong<span class="nt">&lt;/strength&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;source&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;path&gt;</span>$focus/emailAddress<span class="nt">&lt;/path&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/source&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/outbound&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/attribute&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;13&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ref&gt;</span>ri:firstName<span class="nt">&lt;/ref&gt;</span>
+<span class="w">                </span><span class="nt">&lt;tolerant&gt;</span>true<span class="nt">&lt;/tolerant&gt;</span>
+<span class="w">                </span><span class="nt">&lt;exclusiveStrong&gt;</span>false<span class="nt">&lt;/exclusiveStrong&gt;</span>
+<span class="w">                </span><span class="nt">&lt;outbound&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;authoritative&gt;</span>true<span class="nt">&lt;/authoritative&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;exclusive&gt;</span>false<span class="nt">&lt;/exclusive&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;strength&gt;</span>strong<span class="nt">&lt;/strength&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;source&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;path&gt;</span>$focus/givenName<span class="nt">&lt;/path&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/source&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/outbound&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/attribute&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;14&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ref&gt;</span>ri:lastName<span class="nt">&lt;/ref&gt;</span>
+<span class="w">                </span><span class="nt">&lt;tolerant&gt;</span>true<span class="nt">&lt;/tolerant&gt;</span>
+<span class="w">                </span><span class="nt">&lt;exclusiveStrong&gt;</span>false<span class="nt">&lt;/exclusiveStrong&gt;</span>
+<span class="w">                </span><span class="nt">&lt;outbound&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;authoritative&gt;</span>true<span class="nt">&lt;/authoritative&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;exclusive&gt;</span>false<span class="nt">&lt;/exclusive&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;strength&gt;</span>strong<span class="nt">&lt;/strength&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;source&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;path&gt;</span>$focus/familyName<span class="nt">&lt;/path&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/source&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/outbound&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/attribute&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;15&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ref&gt;</span>ri:username<span class="nt">&lt;/ref&gt;</span>
+<span class="w">                </span><span class="nt">&lt;tolerant&gt;</span>true<span class="nt">&lt;/tolerant&gt;</span>
+<span class="w">                </span><span class="nt">&lt;exclusiveStrong&gt;</span>false<span class="nt">&lt;/exclusiveStrong&gt;</span>
+<span class="w">                </span><span class="nt">&lt;outbound&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;authoritative&gt;</span>true<span class="nt">&lt;/authoritative&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;exclusive&gt;</span>false<span class="nt">&lt;/exclusive&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;strength&gt;</span>strong<span class="nt">&lt;/strength&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;source&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;path&gt;</span>$focus/name<span class="nt">&lt;/path&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/source&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/outbound&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/attribute&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/objectType&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/schemaHandling&gt;</span>
+<span class="w">    </span><span class="nt">&lt;capabilities&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cachingMetadata&gt;</span>
+<span class="w">            </span><span class="nt">&lt;retrievalTimestamp&gt;</span>2021-12-23T01:48:28.022Z<span class="nt">&lt;/retrievalTimestamp&gt;</span>
+<span class="w">            </span><span class="nt">&lt;serialNumber&gt;</span>a929fe097692697d-7870fdab770dde0<span class="nt">&lt;/serialNumber&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/cachingMetadata&gt;</span>
+<span class="w">        </span><span class="nt">&lt;native</span><span class="w"> </span><span class="na">xmlns:cap=</span><span class="s">&quot;http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cap:schema/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cap:testConnection/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cap:create/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cap:update&gt;</span>
+<span class="w">                </span><span class="nt">&lt;cap:delta&gt;</span>true<span class="nt">&lt;/cap:delta&gt;</span>
+<span class="w">                </span><span class="nt">&lt;cap:addRemoveAttributeValues&gt;</span>true<span class="nt">&lt;/cap:addRemoveAttributeValues&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/cap:update&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cap:delete/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cap:script&gt;</span>
+<span class="w">                </span><span class="nt">&lt;cap:host&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;cap:type&gt;</span>connector<span class="nt">&lt;/cap:type&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/cap:host&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/cap:script&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cap:activation&gt;</span>
+<span class="w">                </span><span class="nt">&lt;cap:status/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/cap:activation&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cap:credentials&gt;</span>
+<span class="w">                </span><span class="nt">&lt;cap:password&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;cap:returnedByDefault&gt;</span>false<span class="nt">&lt;/cap:returnedByDefault&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/cap:password&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/cap:credentials&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cap:read&gt;</span>
+<span class="w">                </span><span class="nt">&lt;cap:returnDefaultAttributesOption&gt;</span>true<span class="nt">&lt;/cap:returnDefaultAttributesOption&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/cap:read&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/native&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/capabilities&gt;</span>
+<span class="nt">&lt;/resource&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="appendix">
+<h2>4. Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h2>
+<p>Change the “User Enabled” &gt;&gt;&gt; ON, while user which created by midPoint, couldn’t login GitLab.</p>
+<p><img alt="key_settings_4" src="../../_images/key_settings_4.png" /></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/oss"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="midpoint.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">midPoint</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="portainer.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">portainer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-keycloak-settings">1. About keycloak settings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-keycloak-with-docker">1) Starting Keycloak with docker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note-the-rs256-certification-of-master-realm">2) Note the RS256 certification of master realm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gitlab-client-and-modify-settings">3) Create GitLab client and modify settings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-mappers">4) Modify mappers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-gitlab-settings">2. About GitLab settings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitlab-config-yaml">1) GitLab config yaml</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose-f-xxx-yml-up-d">2) docker-compose -f xxx.yml up -d</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-midpoint-settings">3. About midPoint settings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#midpoint-config-yaml">1) midPoint  config yaml</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-keycloak-connector-and-place-to-midpoint-home-directory">2) Download Keycloak connector and place to midPoint home directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#midpoint-keycloak">3) midpoint + keycloak</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">4. Appendix</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2021-2024 by Yuan Zhang.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

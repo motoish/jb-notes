@@ -1,0 +1,955 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>+ CheatSheet - AWS Developer &#8212; Yuan&#39;s notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/cloud/cheatsheet/awsDeveloper';</script>
+    <link rel="canonical" href="https://motoish.github.io/jb-notes/src/cloud/cheatsheet/awsDeveloper.html" />
+    <link rel="icon" href="../../../_static/icon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="+ CheatSheet - AWS Security Specialty" href="awsSecurity.html" />
+    <link rel="prev" title="GCP - Professional Cloud Architect" href="../gcp_02.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Yuan's notes</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    落穂拾い
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Math</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../math/ref.html">Reference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../aws.html">AWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws-vpc-end2end-connection.html">AWS - How to implement end to end VPC Endpoint service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gcp_01.html">GCP - Associate Cloud Engineer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gcp_02.html">GCP - Professional Cloud Architect</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">+ CheatSheet - AWS Developer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="awsSecurity.html">+ CheatSheet - AWS Security Specialty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../azure.html">Azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digitalocean.html">DigitalOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mindmap/m01-aws.html">+ MindMap-AWS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Language</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../language/go.html">Golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../language/py.html">Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DB</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../db/mongodb_01.html">MongoDB - Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../db/mongodb_02.html">MongoDB - Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../db/mongodb_03.html">MongoDB - Replication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../db/mongodb_04.html">MongoDB - Sharding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../db/mysql.html">MySQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Command</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../command/mac.html">MacOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../command/linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../command/win.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../command/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../command/github-cli.html">GitHub CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../command/docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../command/kubernetes.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../command/ffmpeg.html">FFmpeg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../command/vim.html">Vim</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../oss/kasm.html">Kasm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oss/midpoint.html">midPoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oss/keycloak.html">midPoint + Keycloack + GitLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oss/portainer.html">portainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oss/helm.html">Helm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oss/kafka.html">Kafka</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dictionary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../dict/en.html">Dict-en</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dict/ja.html">Dict-ja</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Settings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../settings/vscode.html">VSCode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../settings/ps.html">PowerShell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../settings/iterm2.html">iTerm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../settings/alacritty.html">Alacritty_Config: alacritty.yml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../settings/others.html">Others</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/intr.html">tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/inde.html">useful links</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/motoish/jb-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/src/cloud/cheatsheet/awsDeveloper.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>+ CheatSheet - AWS Developer</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-service">1. Deploy Service</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-service">2. Security Service</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development">3. Development</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">開発環境</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">ストレージ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">データベース</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api">コンピューティング・API</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring">4. Monitoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point">point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documment">documment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#be-lazy"><strong>Be Lazy</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#products-and-features-can-be-deployed-by-elastic-beanstalk">products and features can be deployed by Elastic Beanstalk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#provisionedthroughputexceededexception">ProvisionedThroughputExceededException</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-fonts-are-being-blocked-by-the-browser">web fonts are being blocked by the browser</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-able-to-access-an-ec2-instance-in-subnet-a-but-is-unable-to-access-an-ec2-instance-in-subnet-b-in-the-same-vpc-which-logs-can-be-used-to-verify-whether-the-traffic-is-reaching-subnet-b">It is able to access an EC2 instance in subnet A, but is unable to access an EC2 instance in subnet B in the same VPC. Which logs can be used to verify whether the traffic is reaching subnet B?</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cheatsheet-aws-developer">
+<h1>+ CheatSheet - AWS Developer<a class="headerlink" href="#cheatsheet-aws-developer" title="Link to this heading">#</a></h1>
+<section id="deploy-service">
+<h2>1. Deploy Service<a class="headerlink" href="#deploy-service" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>デプロイパターン</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>デプロイパターン</p></th>
+<th class="head text-left"><p>特徴</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>In-Place</p></td>
+<td class="text-left"><p>稼働中の環境を新しいアプリで更新する</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Linear(線形)</p></td>
+<td class="text-left"><p>毎分10%づつ新環境の割合をふやすなど、時系列グラフとした場合、直線的に推移する</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Canary</p></td>
+<td class="text-left"><p>最初は10%のみで、数分後に全てなど、割合によって段階的にリリース</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Blue/Green</p></td>
+<td class="text-left"><p>現バージョン環境とは別に新バージョン環境を構築し、リクエスト送信先を切り替える</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Rolling</p></td>
+<td class="text-left"><p>サーバをいくつかのグループに分けて、グループごとにIn-Place更新をする</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Immutable</p></td>
+<td class="text-left"><p>現バージョンサーバとは別に新バージョンサーバを構築する</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>All at once</p></td>
+<td class="text-left"><p>全てのサーバで同時にIn-Place更新をする</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><p>AWS Code サービス (English)</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/en_us/codecommit/latest/userguide/welcome.html">AWS CodeCommit</a>: プライベートなGitリポジトリサービス</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/en_us/codebuild/latest/userguide/welcome.html">AWS CodeBuild</a>: コンパイル、テスト、パッケージングなどのビルドプロセスを提供</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/en_us/codedeploy/latest/userguide/welcome.html">AWS CodeDeploy</a>: デプロイの自動化</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/en_us/codepipeline/latest/userguide/welcome.html">AWS CodePipeline</a>: CI/CDパイプラインを構築</p>
+<ul>
+<li><p>迅速かつ信頼性の高いアプリ更新を実現する。</p></li>
+<li><p>リリース結果を可視化して確認できる。</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html">AWS CodeArtifact</a>: プライベートソフトウェア配信リポジトリサービス</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html">AWS CodeGuru</a>: 自動コードレビュー</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="security-service">
+<h2>2. Security Service<a class="headerlink" href="#security-service" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>ネットワークのセキュリティ</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Azmazon VPC</a></p>
+<ul>
+<li><p>VPC エンドポイント</p>
+<ul>
+<li><p><strong>ゲートウェイエンドポイント</strong>を使用するサービス(2つ)</p>
+<ul>
+<li><p>Amazon S3</p></li>
+<li><p>Amazon DynamoDB</p></li>
+</ul>
+</li>
+<li><p><strong>インターフェースエンドポイント</strong>を使用するサービス(一部)</p>
+<ul>
+<li><p>Amazon API GateWay</p></li>
+<li><p>Amazon CloudWatch</p></li>
+<li><p>AWS CodeBuild</p></li>
+<li><p>AWS Elastic Beanstalk</p></li>
+<li><p>Amazon Elastic Container Registry</p></li>
+<li><p>AWS KMS</p></li>
+<li><p>Amazon Kinesis Data Steams</p></li>
+<li><p>AWS Lambda</p></li>
+<li><p>AWS Secrets Manager</p></li>
+<li><p>AWS Systems Manager</p></li>
+<li><p>Amazon SNS</p></li>
+<li><p>Amazon SQS</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>認証と認可</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html">AWS Identity &amp; Access Management (IAM)</a></p>
+<ul>
+<li><p>IAMポリシーは、最小権限の原則を守って設定することがベストプラクティス。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html">Amazon Cognito</a></p>
+<ul class="simple">
+<li><p>User Group</p>
+<ul>
+<li><p>ユーザグループでできることは主に以下の通り。</p>
+<ul>
+<li><p>サインアップ、サインインを簡単にアプリに実装</p></li>
+<li><p>カスタム可能な組み込みサインインUI</p></li>
+<li><p>ユーザプロファイルの管理</p></li>
+<li><p>MFA、本人確認などユーザ認証の一般的な機能</p></li>
+<li><p>Lambdaトリガー</p></li>
+<li><p>Web ID フェデレーション(Google, Apple, Amazon)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html">AWS Systems Manager</a></p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html">AWS Secrets Manager</a></p></li>
+</ul>
+</li>
+<li><p>暗号化</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/kms/latest/developerguide/overview.html">AWS Key Management Service (KMS)</a>: 暗号化するためのキーを作成、管理するサービス。</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html">AWS Certificate Manager</a>: 独自ドメインのアプリでの証明書の管理、設定の機能を提供。</p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html">Amazon CloudFront</a></p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html">Amazon Simple Stroage Service (S3)</a></p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html">Amazon RDS</a></p></li>
+<li><p><a class="reference external" href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html">Amazon Simple Queue Service (SQS)</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="development">
+<h2>3. Development<a class="headerlink" href="#development" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>開発環境<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>署名バージョン4を使用してリクエストに署名する手順</p>
+<ol class="arabic simple">
+<li><p>正規リクエストを作成する。</p></li>
+<li><p>正規リクエストと追加のメタデータを使用して、署名の文字列を作成する。</p></li>
+<li><p>AWSシークレットアクセスキーから署名キーを取得する。次に署名キーと手順で準備した文字列を使用して署名を作成する。</p></li>
+<li><p>作成した署名をヘッダーのHTTPリクエストに追加するか、クエリ文字列パラメータとして追加する。</p></li>
+</ol>
+</li>
+<li><p>認証情報の優先順位</p>
+<ol class="arabic simple">
+<li><p>コードのオプションやパラメータで指定されたアクセスキー情報</p></li>
+<li><p>環境変数(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KERY)</p></li>
+<li><p>.aws/credentials ファイル</p></li>
+<li><p>EC2 の IAM ロール(インスタンスプロファイル)</p></li>
+</ol>
+</li>
+<li><p>AWS Cloud9</p>
+<ul>
+<li><p>すぐに開発を始めることができる</p></li>
+<li><p>複数ユーザでリアルタイム共有できる</p></li>
+<li><p>サーバレスのデプロイが簡単</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id2">
+<h3>ストレージ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>S3 主な特徴</p>
+<ul>
+<li><p>オブジェクトストレージ</p></li>
+<li><p>インターネット対応</p></li>
+<li><p>無制限にデータを保存</p></li>
+<li><p>柔軟なセキュリティ設定</p></li>
+</ul>
+</li>
+<li><p>S3 主なユースケース</p>
+<ul>
+<li><p>データレイク: あらゆる場所から、あらゆる形式のデータをそのままの形で保存して、集計や機械学習などのさまざまな分析用途で使用するための保管場所のこと。</p></li>
+<li><p>バックアップ</p></li>
+<li><p>配信</p></li>
+<li><p>コンテンツストレージ</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h3>データベース<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>RDB系</p>
+<ul>
+<li><p>Amazon RDB</p></li>
+<li><p>Amazon Aurora</p></li>
+</ul>
+</li>
+<li><p>NoSQL系</p>
+<ul>
+<li><p>Amazon DynamoDB</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="api">
+<h3>コンピューティング・API<a class="headerlink" href="#api" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>AWS Lambda</p>
+<ul>
+<li><p>ベストプラクティス</p>
+<ul>
+<li><p>環境変数を使用する</p></li>
+<li><p>共通のモジュール、ライブラリーをレイヤーで共有する</p></li>
+<li><p>再帰的なコードを使用しない</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>API Gateway で REST API を作成する最短手順</p>
+<ul>
+<li><p>API Gateway で REST API を作成</p></li>
+<li><p>リソースの作成</p></li>
+<li><p>メソッドの作成</p></li>
+<li><p>テスト</p></li>
+<li><p>デプロイ</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="monitoring">
+<h2>4. Monitoring<a class="headerlink" href="#monitoring" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Amazon ClouWatch のメトリクス</p>
+<ul>
+<li><p>EC2</p>
+<ul>
+<li><p>CPUUtilization: EC2 で使用されている CPU の比率。</p></li>
+<li><p>NetworkIn: インスタンスが受信したバイト数。</p></li>
+<li><p>NetworkOut: インスタンスから送信したバイト数。</p></li>
+<li><p>StatusCheckFailed: インスタンスのステータスチェックとシステムステータスチェックのいずれかに失敗した場合は1、それ以外は0。</p></li>
+</ul>
+</li>
+<li><p>EBS</p>
+<ul>
+<li><p>VolumeReadOps: ディスク読み取り回数。</p></li>
+<li><p>VolumeWriteOps: ディスク書き込み回数。</p></li>
+</ul>
+</li>
+<li><p>RDS</p>
+<ul>
+<li><p>DatabaseConnections: データベース接続数。</p></li>
+<li><p>ReadIOPS: ディスク読み取り回数。</p></li>
+<li><p>WriteIOPS: ディスク書き込み回数。</p></li>
+<li><p>FreeableMemory: 使用可能なメモリ容量。</p></li>
+</ul>
+</li>
+<li><p>DynamoDB</p>
+<ul>
+<li><p>ProvisionedWriteCapacityUnits: 設定している、またはオートスケーリングによって設定された書き込みキャパシティユニット数。</p></li>
+<li><p>ProvisionedReadCapacityUnits: 設定している、またはオートスケーリングによって設定された読み込みキャパシティユニット数。</p></li>
+<li><p>ConsumedWriteCapacityUnits: 消費された書き込みキャパシティユニット数。</p></li>
+<li><p>ConsumedReadCapacityUnits: 消費された読み込みキャパシティユニット数。</p></li>
+<li><p>TrottledRequests: キャパシティユニットによって設定されたスループットの上限を超えて発生したリクエスト数。</p></li>
+<li><p>ReadThrottleEvents: スロットルのうちの読み込みリクエスト。</p></li>
+<li><p>WriteThrottleEvents: スロットルのうちの書き込みリクエスト。</p></li>
+</ul>
+</li>
+<li><p>S3</p>
+<ul>
+<li><p>BucketSizeBytes: 保存されているオブジェクトデータの量。</p></li>
+<li><p>NumberOfObjects: オブジェクトの合計数。</p></li>
+</ul>
+</li>
+<li><p>Lambda</p>
+<ul>
+<li><p>Invocations: 呼び出し実行数(請求対象リクエスト数)</p></li>
+<li><p>ConcurrentExecutions: 実行された関数インスタンスの数。</p></li>
+<li><p>Errors: タイムアウトなどのランタイムエラー、コードによって例外処理したエラーの総数。</p></li>
+<li><p>Throttles: ConcurrentExecutions が同時実行数に達した場合、リクエストが実行されずにスロットリングされる。スロットリングされた数が記録される。</p></li>
+<li><p>Duration: 関数が実行された時間。</p></li>
+</ul>
+</li>
+<li><p>API Gateway</p>
+<ul>
+<li><p>Count: API リクエスト数。</p></li>
+<li><p>4XXError: クライアント側のエラー数。</p></li>
+<li><p>5XXError: サーバ側のエラー数。</p></li>
+<li><p>IntegrationLatency: API Gateway がバックエンドにリクエストを送信してからレスポンスを受け取るまでの時間。</p></li>
+<li><p>Latency: API Gateway がクライアントからリクエストを受け取ってからクライアントにレスポンスを返すまでの時間。</p></li>
+</ul>
+</li>
+<li><p>SQS</p>
+<ul>
+<li><p>SentMessageSize: キューに送信されたメッセージのサイズ。</p></li>
+<li><p>NumberOfMessagesSent: キューに送信されたメッセージの数。</p></li>
+<li><p>NumberOfMessagesReceived: キューへの ReceiveMessage API アクションによって返されたメッセージの数。</p></li>
+<li><p>NumberOfMessagesDeleted: キューから削除されたメッセージの数。</p></li>
+<li><p>NumberOfEmptyReceives: メッセージを返さなかったキューへの ReceiveMessage API アクションの数。この数が多くて減らしたい場合は、ロングポーリングを検討する。</p></li>
+<li><p>ApproximateNumberOfMessagesVisible: 取得可能なメッセージの数。Visible とあるように可視性タイムアウトになっていないメッセージ。</p></li>
+<li><p>ApproximateNumberOfMessagesNotVisible: 処理中のメッセージの数。Not Visible なので可視性タイムアウトによって見えなくなっているメッセージ。</p></li>
+</ul>
+</li>
+<li><p>SNS</p>
+<ul>
+<li><p>NumberOfMessagesPublished: トピックにパブリッシュされたメッセージ数。</p></li>
+<li><p>NumberOfNotificationsDeliverd: サブスクライブに正常配信されたメッセージ数。</p></li>
+<li><p>NumberOfNotificationsFailed: サブスクライブへの配信に失敗したメッセージ数。</p></li>
+<li><p>PublishSize: トピックにパブリッシュされたメッセージサイズ。</p></li>
+</ul>
+</li>
+<li><p>Step Functions</p>
+<ul>
+<li><p>ExecutionTime: 開始から終了までの時間。</p></li>
+<li><p>EcecutionThrottled: 制限に達した実行回数。この問題を解消するためには、クォータ引上げのリクエストをしてください。</p></li>
+<li><p>ExecutionsFailed: 失敗した実行数。</p></li>
+<li><p>ExecutionsStarted: 開始された実行数。</p></li>
+<li><p>ExecutionsSucceeded: 正常完了した実行数。</p></li>
+<li><p>ExecutionsTimedOut: タイムアウトした実行数。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="point">
+<h2>point<a class="headerlink" href="#point" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><strong>データベース認証情報を格納</strong>および<strong>自動ローテート</strong>するための<strong>セキュアな方法</strong></p>
+<p>AWS Secrets Manager</p>
+</li>
+<li><p>サインアップ機能、サインイン機能をロギングする</p>
+<p>Amazon Congnito + AWS Lambda</p>
+</li>
+</ul>
+<p><em>出典: <a class="reference external" href="https://www.amazon.co.jp/%E3%83%9D%E3%82%B1%E3%83%83%E3%83%88%E3%82%B9%E3%82%BF%E3%83%87%E3%82%A3-AWS%E8%AA%8D%E5%AE%9A-%E3%83%87%E3%83%99%E3%83%AD%E3%83%83%E3%83%91%E3%83%BC%E3%82%A2%E3%82%BD%E3%82%B7%E3%82%A8%E3%82%A4%E3%83%88-%E3%82%A2%E3%82%BD%E3%82%B7%E3%82%A8%E3%82%A4%E3%83%88%E8%A9%A6%E9%A8%93%E3%83%9D%E3%82%B1%E3%83%83%E3%83%88%E3%82%B9%E3%82%BF%E3%83%87%E3%82%A3-%E5%B1%B1%E4%B8%8B%E5%85%89%E6%B4%8B/dp/4798063401/ref=sr_1_1?dchild=1&amp;amp;keywords=aws+%E3%83%87%E3%83%99%E3%83%AD%E3%83%83%E3%83%91%E3%83%BC+%E3%82%A2%E3%82%BD%E3%82%B7%E3%82%A8%E3%82%A4%E3%83%88&amp;amp;qid=1634528270&amp;amp;sr=8-1">「ポケットスタディ AWS認定 デベロッパーアソシエイト (アソシエイト試験ポケットスタディ)」</a></em></p>
+</section>
+<section id="documment">
+<h2>documment<a class="headerlink" href="#documment" title="Link to this heading">#</a></h2>
+<section id="be-lazy">
+<h3><strong>Be Lazy</strong><a class="headerlink" href="#be-lazy" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p><strong>Lazy caching</strong>, also called <strong>lazy population</strong> or <strong>cache-aside</strong>, is the most prevalent form of caching. Laziness should serve as the foundation of any good caching strategy. The basic idea is to populate the cache only when an object is actually requested by the application.</p>
+</div></blockquote>
+</section>
+<section id="products-and-features-can-be-deployed-by-elastic-beanstalk">
+<h3>products and features can be deployed by Elastic Beanstalk<a class="headerlink" href="#products-and-features-can-be-deployed-by-elastic-beanstalk" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Auto Scaling groups</p></li>
+<li><p>Elastic Load Balancers</p></li>
+<li><p>RDS Instances</p></li>
+</ul>
+</section>
+<section id="provisionedthroughputexceededexception">
+<h3>ProvisionedThroughputExceededException<a class="headerlink" href="#provisionedthroughputexceededexception" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of requests <strong>using Error Retries</strong> and <strong>Exponential Backoff</strong>.</p>
+</div></blockquote>
+</section>
+<section id="web-fonts-are-being-blocked-by-the-browser">
+<h3>web fonts are being blocked by the browser<a class="headerlink" href="#web-fonts-are-being-blocked-by-the-browser" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Suppose that you want to host a web font from your S3 bucket. Again, browsers require a CORS check (also called a preflight check) for loading web fonts. You would configure the bucket that is hosting the web font to allow any origin to make these requests.</p>
+</div></blockquote>
+<p>出典: <a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html">Using cross-origin resource sharing (CORS)</a></p>
+</section>
+<section id="it-is-able-to-access-an-ec2-instance-in-subnet-a-but-is-unable-to-access-an-ec2-instance-in-subnet-b-in-the-same-vpc-which-logs-can-be-used-to-verify-whether-the-traffic-is-reaching-subnet-b">
+<h3>It is able to access an EC2 instance in subnet A, but is unable to access an EC2 instance in subnet B in the same VPC. Which logs can be used to verify whether the traffic is reaching subnet B?<a class="headerlink" href="#it-is-able-to-access-an-ec2-instance-in-subnet-a-but-is-unable-to-access-an-ec2-instance-in-subnet-b-in-the-same-vpc-which-logs-can-be-used-to-verify-whether-the-traffic-is-reaching-subnet-b" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>VPC Flow Logs</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/cloud/cheatsheet"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../gcp_02.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">GCP - Professional Cloud Architect</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="awsSecurity.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">+ CheatSheet - AWS Security Specialty</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-service">1. Deploy Service</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-service">2. Security Service</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development">3. Development</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">開発環境</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">ストレージ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">データベース</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api">コンピューティング・API</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring">4. Monitoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point">point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documment">documment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#be-lazy"><strong>Be Lazy</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#products-and-features-can-be-deployed-by-elastic-beanstalk">products and features can be deployed by Elastic Beanstalk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#provisionedthroughputexceededexception">ProvisionedThroughputExceededException</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#web-fonts-are-being-blocked-by-the-browser">web fonts are being blocked by the browser</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-able-to-access-an-ec2-instance-in-subnet-a-but-is-unable-to-access-an-ec2-instance-in-subnet-b-in-the-same-vpc-which-logs-can-be-used-to-verify-whether-the-traffic-is-reaching-subnet-b">It is able to access an EC2 instance in subnet A, but is unable to access an EC2 instance in subnet B in the same VPC. Which logs can be used to verify whether the traffic is reaching subnet B?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2021-2024 by Yuan Zhang.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

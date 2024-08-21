@@ -1,0 +1,1098 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AWS - How to implement end to end VPC Endpoint service &#8212; Yuan&#39;s notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'src/cloud/aws-vpc-end2end-connection';</script>
+    <link rel="canonical" href="https://motoish.github.io/jb-notes/src/cloud/aws-vpc-end2end-connection.html" />
+    <link rel="icon" href="../../_static/icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="GCP - Associate Cloud Engineer" href="gcp_01.html" />
+    <link rel="prev" title="AWS" href="aws.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Yuan's notes</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    落穂拾い
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Math</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../math/ref.html">Reference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">AWS - How to implement end to end VPC Endpoint service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gcp_01.html">GCP - Associate Cloud Engineer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gcp_02.html">GCP - Professional Cloud Architect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheatsheet/awsDeveloper.html">+ CheatSheet - AWS Developer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheatsheet/awsSecurity.html">+ CheatSheet - AWS Security Specialty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="azure.html">Azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digitalocean.html">DigitalOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mindmap/m01-aws.html">+ MindMap-AWS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Language</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../language/go.html">Golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/py.html">Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DB</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../db/mongodb_01.html">MongoDB - Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/mongodb_02.html">MongoDB - Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/mongodb_03.html">MongoDB - Replication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/mongodb_04.html">MongoDB - Sharding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db/mysql.html">MySQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Command</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../command/mac.html">MacOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/win.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/github-cli.html">GitHub CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/kubernetes.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/ffmpeg.html">FFmpeg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../command/vim.html">Vim</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../oss/kasm.html">Kasm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/midpoint.html">midPoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/keycloak.html">midPoint + Keycloack + GitLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/portainer.html">portainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/helm.html">Helm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/kafka.html">Kafka</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dictionary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../dict/en.html">Dict-en</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dict/ja.html">Dict-ja</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Settings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../settings/vscode.html">VSCode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../settings/ps.html">PowerShell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../settings/iterm2.html">iTerm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../settings/alacritty.html">Alacritty_Config: alacritty.yml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../settings/others.html">Others</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/intr.html">tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/inde.html">useful links</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/motoish/jb-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/src/cloud/aws-vpc-end2end-connection.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AWS - How to implement end to end VPC Endpoint service</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vpc-endpoint">VPC Endpoint について</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">VPC Endpoint とは</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">VPC Endpoint の機能</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">各種 VPC Endpoint の使用料金</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">VPC Endpoint を利用するメリット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">VPC Endpoint 利用シーン</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vpc-endpoint-2-vpc">実践デモ - VPC Endpoint で 2つの VPC 間にエンドツーエンドの接続を設定する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-a-service-provider-vpc">Step 1. Create a service provider VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-and-attach-an-igw">Step 2. Create and attach an IGW</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-service-igw">1. Create Service IGW</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-service-igw">2. Attach Service IGW</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-create-a-public-subnet">Step 3. Create a Public subnet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create-a-public-route-table-and-associate-it-with-the-subnet">Step 4. Create a Public Route Table and associate it with the subnet</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-service-public-route-table">1. Create Service Public Route Table</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-route-table-with-service-public-subnet">2. Associate Route Table with Service Public subnet</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-add-the-public-route-in-the-route-table">Step 5. Add the public Route in the Route table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-create-an-ec2-instance">Step 6. Create an EC2 Instance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-instance-detail-subnet">1. Configure Instance Detail(Subnet)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-advanced-details">2. Configure Advanced Details</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-security-group">3. Configure Security Group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-instance">4. Launch instance</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-create-a-network-loadbalancer">Step 7. Create a Network LoadBalancer</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-loadbalancer">1. Configure LoadBalancer</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-target-group">2. Create target group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#register-targets">3. Register targets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dns-name">4. DNS name</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-create-an-endpoint-service">Step 8. Create an Endpoint service</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-create-a-customer-vpc">Step 9. Create a customer VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-10-create-and-attach-an-internet-gateway">Step 10. Create and attach an Internet Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-customer-igw">1. Create Customer IGW</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-customer-igw">2. Attach Customer IGW</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-11-create-a-public-subnet">Step 11. Create a Public subnet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-12-create-a-public-route-table-and-associate-it-with-the-subnet">Step 12. Create a Public Route Table and associate it with the subnet</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-customer-public-route-table">1. Create Customer Public Route Table</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-route-table-with-customer-public-subnet">2. Associate Route Table with Customer Public subnet</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-13-add-the-public-route-in-the-route-table">Step 13. Add the public Route in the Route table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-14-create-an-ec2-instance">Step 14. Create an EC2 Instance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-instance-detail-customer">1. Configure Instance Detail(Customer)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2. Configure Security Group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3. Launch instance</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-15-create-a-vpc-endpoint">Step 15. Create a VPC Endpoint</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-endpoint">1. Configure Endpoint</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accept-endpoint-connection-request">2. Accept endpoint connection request</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-16-test-the-connectivity">Step 16. Test the connectivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-17-delete-aws-resources">Step 17. Delete AWS Resources</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="aws-how-to-implement-end-to-end-vpc-endpoint-service">
+<h1>AWS - How to implement end to end VPC Endpoint service<a class="headerlink" href="#aws-how-to-implement-end-to-end-vpc-endpoint-service" title="Link to this heading">#</a></h1>
+<section id="vpc-endpoint">
+<h2>VPC Endpoint について<a class="headerlink" href="#vpc-endpoint" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>VPC Endpoint とは<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>異なる VPC、または異なるリージョンに配置された AWS サービス同士の通信を、インターネットを経由することなく Amazon のネットワーク内で繋ぐサービス。</p>
+</section>
+<section id="id2">
+<h3>VPC Endpoint の機能<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Interface Endpoint、Gateway Load Balancer Endpoint と Gateway Endpoint の3つの機能が提供されている。</p>
+<ul class="simple">
+<li><p>Interface Endpoint: VPC内にインターフェイスを設置して、インターネットゲートウェイを介さずに、VPC外(AWS通信網内)のサービスにアクセスするための機能。</p></li>
+<li><p>Gateway Load Balancer Endpoint: サブネットの IP アドレス範囲のプライベート IP アドレスを持つ Elastic Network Interface、トラフィックをインターセプトし、Gateway Load Balancer を使用して設定したネットワークまたはセキュリティサービスにルーティングするエントリポイントとして機能。</p></li>
+<li><p>Gateway Endpoint: VPCにゲートウェイ（門）を設置することで、インターネットを介さずに、VPC内のサービスとVPC外（AWS通信網内）のサービスの通信を実現する機能。(AmazonS3 または DynamoDB のいずれかに向かう)</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>各種 VPC Endpoint の使用料金<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://aws.amazon.com/privatelink/pricing/">時間単位の使用料金とデータ処理料金が課金するサービス</a></p>
+<ul>
+<li><p>Interface Endpoint</p></li>
+<li><p>Gateway Load Balancer Endpoint</p></li>
+</ul>
+</li>
+<li><p>料金なし</p>
+<ul>
+<li><p>Gateway Endpoint</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h3>VPC Endpoint を利用するメリット<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>実質的なインターネットとの出入口を封鎖して、セキュアな経路が実現できる。IGW(Internet Gateway)、NATGW が不要になる。</p></li>
+<li><p>費用対効果。時間課金は無料か1/6に削減できる。上記、「各種 VPC Endpoint の使用料金」を確認してもらえればわかると思われている。東京リージョンで1時間あたり Interface Endpoint の使用料金は、＄0.014 になっており、それに対して、NATゲートウェイの場合、＄0.62 である(同じ東京リージョンで1時間に処理データ1GBあたり)。</p></li>
+</ol>
+</section>
+<section id="id5">
+<h3>VPC Endpoint 利用シーン<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>ユーザーは多くのVPCを管理している場合、プライベートサブネットにあるリソースからAWSのリソースにインターネットを経由せず、セキュアにアクセスする。また、大量に S3 や DynamoDB と通信が発生する場合、VPC Endpoint を使ったら、費用対効果が高くなる。</p>
+</section>
+</section>
+<section id="vpc-endpoint-2-vpc">
+<h2>実践デモ - VPC Endpoint で 2つの VPC 間にエンドツーエンドの接続を設定する<a class="headerlink" href="#vpc-endpoint-2-vpc" title="Link to this heading">#</a></h2>
+<p>Required Time: 1h30m</p>
+<section id="architecture">
+<h3>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h3>
+<p>こちらの構築図で VPC Endpoint の実践デモを作成してみよう。
+<img alt="endpoint_architecture_demo" src="../../_images/00_architecture.png" /></p>
+</section>
+<section id="step-1-create-a-service-provider-vpc">
+<h3>Step 1. Create a service provider VPC<a class="headerlink" href="#step-1-create-a-service-provider-vpc" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Name tag: Service_Network</p></li>
+<li><p>IPv4 CIDR: 20.0.0.0/16</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/01_Create-Service-Provider-VPC-02.png" /></p>
+</section>
+<section id="step-2-create-and-attach-an-igw">
+<h3>Step 2. Create and attach an IGW<a class="headerlink" href="#step-2-create-and-attach-an-igw" title="Link to this heading">#</a></h3>
+<section id="create-service-igw">
+<h4>1. Create Service IGW<a class="headerlink" href="#create-service-igw" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Name tag: Service_IGW</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/02_Create-Attach-IGW-02.png" /></p>
+</section>
+<section id="attach-service-igw">
+<h4>2. Attach Service IGW<a class="headerlink" href="#attach-service-igw" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Available VPCs: Service_Network</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/02_Create-Attach-IGW-04.png" /></p>
+</section>
+</section>
+<section id="step-3-create-a-public-subnet">
+<h3>Step 3. Create a Public subnet<a class="headerlink" href="#step-3-create-a-public-subnet" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>VPC ID: (プールダウンから選択) Service_Network</p></li>
+<li><p>Subnet name: Service_Public_subnet</p></li>
+<li><p>Availability Zone:  us-east-1a</p></li>
+<li><p>IPv4 CIDR block: 20.0.1.0/24</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/03_Create-Pubilc-Subnet-03.png" /></p>
+</section>
+<section id="step-4-create-a-public-route-table-and-associate-it-with-the-subnet">
+<h3>Step 4. Create a Public Route Table and associate it with the subnet<a class="headerlink" href="#step-4-create-a-public-route-table-and-associate-it-with-the-subnet" title="Link to this heading">#</a></h3>
+<section id="create-service-public-route-table">
+<h4>1. Create Service Public Route Table<a class="headerlink" href="#create-service-public-route-table" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Name tag: Service_PublicRT</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/04_Create-Public-Route-Table-02.png" /></p>
+</section>
+<section id="associate-route-table-with-service-public-subnet">
+<h4>2. Associate Route Table with Service Public subnet<a class="headerlink" href="#associate-route-table-with-service-public-subnet" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>VPC: (一覧から選択) Service_Network</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/04_Create-Public-Route-Table-05.png" /></p>
+</section>
+</section>
+<section id="step-5-add-the-public-route-in-the-route-table">
+<h3>Step 5. Add the public Route in the Route table<a class="headerlink" href="#step-5-add-the-public-route-in-the-route-table" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Destination: 0.0.0.0/0</p></li>
+<li><p>Target: (一覧から選択) Internet Gateway</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/05_Add-Public-Route-To-Route-Table-01.png" /></p>
+</section>
+<section id="step-6-create-an-ec2-instance">
+<h3>Step 6. Create an EC2 Instance<a class="headerlink" href="#step-6-create-an-ec2-instance" title="Link to this heading">#</a></h3>
+<section id="configure-instance-detail-subnet">
+<h4>1. Configure Instance Detail(Subnet)<a class="headerlink" href="#configure-instance-detail-subnet" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Network: Service_Network</p></li>
+<li><p>Subnet: Service_Public_subnet</p></li>
+<li><p>Auto-assign Public IP: Enable</p></li>
+</ul>
+</section>
+<section id="configure-advanced-details">
+<h4>2. Configure Advanced Details<a class="headerlink" href="#configure-advanced-details" title="Link to this heading">#</a></h4>
+<ul>
+<li><p>User data:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+sudo<span class="w"> </span>su
+
+yum<span class="w"> </span>update<span class="w"> </span>-y
+
+yum<span class="w"> </span>install<span class="w"> </span>httpd<span class="w"> </span>-y
+
+systemctl<span class="w"> </span>start<span class="w"> </span>httpd
+
+systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>httpd
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;html&gt;&lt;h1&gt; Welcome to Hangyuzs Server 1 &lt;/h1&gt;&lt;html&gt;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/var/www/html/index.html
+
+systemctl<span class="w"> </span>restart<span class="w"> </span>http
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="configure-security-group">
+<h4>3. Configure Security Group<a class="headerlink" href="#configure-security-group" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Create security group</p></li>
+<li><p>Security group name: Webserver_sg</p></li>
+<li><p>Description: Security group for Webserver</p></li>
+<li><p>Add Inbound security groups rules</p>
+<ul>
+<li><p>rule 1</p>
+<ul>
+<li><p>Type: ssh</p></li>
+<li><p>Source type: Anywhere</p></li>
+</ul>
+</li>
+<li><p>rule 2</p>
+<ul>
+<li><p>Type: HTTP</p></li>
+<li><p>Source type: Anywhere</p></li>
+</ul>
+</li>
+<li><p>rule 3</p>
+<ul>
+<li><p>Type: HTTPS</p></li>
+<li><p>Source type: Anywhere</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/06_Create-EC2-Instance-01.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/06_Create-EC2-Instance-03.png" /></p>
+</section>
+<section id="launch-instance">
+<h4>4. Launch instance<a class="headerlink" href="#launch-instance" title="Link to this heading">#</a></h4>
+<p><img alt="endpoint_architecture_demo" src="../../_images/06_Create-EC2-Instance-05.png" /></p>
+</section>
+</section>
+<section id="step-7-create-a-network-loadbalancer">
+<h3>Step 7. Create a Network LoadBalancer<a class="headerlink" href="#step-7-create-a-network-loadbalancer" title="Link to this heading">#</a></h3>
+<section id="configure-loadbalancer">
+<h4>1. Configure LoadBalancer<a class="headerlink" href="#configure-loadbalancer" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Load balancer name: MyNetwork-LB</p></li>
+<li><p>Schema: Internet-facing</p></li>
+<li><p>Ip address type: IPv4</p></li>
+<li><p>VPC: Service_Network</p></li>
+<li><p>Mappings: us-east-1a</p></li>
+<li><p>Subnet: Service_Public_subnet</p></li>
+<li><p>Listeners and routing:</p>
+<ul>
+<li><p>Protocol: TCP</p></li>
+<li><p>Port: 80</p></li>
+<li><p>Default action: 下記 <a class="reference internal" href="#2-create-target-group"><span class="xref myst">2. Create target group</span></a> を参照。</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/07_Create-NLB-01.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/07_Create-NLB-02.png" /></p>
+</section>
+<section id="create-target-group">
+<h4>2. Create target group<a class="headerlink" href="#create-target-group" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Basic Configuration: Instances</p></li>
+<li><p>Target group name: MyNetwork-TG</p></li>
+<li><p>Protocl: TCP</p></li>
+<li><p>Port: 80</p></li>
+<li><p>VPC: Service_Network</p></li>
+<li><p>Interval: 10 seconds</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/07_Create-NLB-03.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/07_Create-NLB-04.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/07_Create-NLB-05.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/07_Create-NLB-06.png" /></p>
+</section>
+<section id="register-targets">
+<h4>3. Register targets<a class="headerlink" href="#register-targets" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Webserver1 を選択し、「Include as pending below」をクリックして、「Create target group」を押す。</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/07_Create-NLB-07.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/07_Create-NLB-08.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/07_Create-NLB-09.png" /></p>
+</section>
+<section id="dns-name">
+<h4>4. DNS name<a class="headerlink" href="#dns-name" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>重要:</strong> Target group に遷移して、Targets タブのほう、Health Status が healthy になるのを待つ。</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/07_Create-NLB-10.png" /></p>
+<ul class="simple">
+<li><p>DNS name に記載してある A Record をコピーして、ブラウザ上で確認する。下記のように表示される。</p></li>
+</ul>
+<div class="highlight-tex notranslate"><div class="highlight"><pre><span></span> Welcome to Hangyuzs Server 1 
+</pre></div>
+</div>
+<p><img alt="endpoint_architecture_demo" src="../../_images/07_Create-NLB-11.png" /></p>
+</section>
+</section>
+<section id="step-8-create-an-endpoint-service">
+<h3>Step 8. Create an Endpoint service<a class="headerlink" href="#step-8-create-an-endpoint-service" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Load balancer name: MyNetwork-LB のチェックを入れる。</p></li>
+<li><p>Additional settings: 「Acceptance required」 のチェックを入れる。</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/08_Create-Endpoint-Service-01.png" /></p>
+<ul class="simple">
+<li><p>Service name をメモする。</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/08_Create-Endpoint-Service-02.png" /></p>
+</section>
+<section id="step-9-create-a-customer-vpc">
+<h3>Step 9. Create a customer VPC<a class="headerlink" href="#step-9-create-a-customer-vpc" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Name tag: Customer_Network</p></li>
+<li><p>IPv4 CIDR: 10.0.0.0/16</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/09_Create-Customer-VPC-02.png" /></p>
+</section>
+<section id="step-10-create-and-attach-an-internet-gateway">
+<h3>Step 10. Create and attach an Internet Gateway<a class="headerlink" href="#step-10-create-and-attach-an-internet-gateway" title="Link to this heading">#</a></h3>
+<section id="create-customer-igw">
+<h4>1. Create Customer IGW<a class="headerlink" href="#create-customer-igw" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Name tag: Customer_IGW</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/10_Create-Attach-Customer-IGW-02.png" /></p>
+</section>
+<section id="attach-customer-igw">
+<h4>2. Attach Customer IGW<a class="headerlink" href="#attach-customer-igw" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Available VPCs: Customer_Network</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/10_Create-Attach-Customer-IGW-04.png" /></p>
+</section>
+</section>
+<section id="step-11-create-a-public-subnet">
+<h3>Step 11. Create a Public subnet<a class="headerlink" href="#step-11-create-a-public-subnet" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>VPC ID: (プールダウンから選択) Customer_Network</p></li>
+<li><p>Subnet name: Customer_Public_subnet</p></li>
+<li><p>Availability Zone:  us-east-1a</p></li>
+<li><p>IPv4 CIDR block: 10.0.1.0/24</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/11_Create-Customer-Public-Subnet-02.png" /></p>
+</section>
+<section id="step-12-create-a-public-route-table-and-associate-it-with-the-subnet">
+<h3>Step 12. Create a Public Route Table and associate it with the subnet<a class="headerlink" href="#step-12-create-a-public-route-table-and-associate-it-with-the-subnet" title="Link to this heading">#</a></h3>
+<section id="create-customer-public-route-table">
+<h4>1. Create Customer Public Route Table<a class="headerlink" href="#create-customer-public-route-table" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Name tag: Customer_PublicRT</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/12_Create-Customer-Public-Route-Table-02.png" /></p>
+</section>
+<section id="associate-route-table-with-customer-public-subnet">
+<h4>2. Associate Route Table with Customer Public subnet<a class="headerlink" href="#associate-route-table-with-customer-public-subnet" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>VPC: (一覧から選択) Customer_Network</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/12_Create-Customer-Public-Route-Table-04.png" /></p>
+</section>
+</section>
+<section id="step-13-add-the-public-route-in-the-route-table">
+<h3>Step 13. Add the public Route in the Route table<a class="headerlink" href="#step-13-add-the-public-route-in-the-route-table" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Destination: 0.0.0.0/0</p></li>
+<li><p>Target: (一覧から選択) Internet Gateway</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/13_Add-Public-Route-In-Customer-Route-Table-02.png" /></p>
+</section>
+<section id="step-14-create-an-ec2-instance">
+<h3>Step 14. Create an EC2 Instance<a class="headerlink" href="#step-14-create-an-ec2-instance" title="Link to this heading">#</a></h3>
+<section id="configure-instance-detail-customer">
+<h4>1. Configure Instance Detail(Customer)<a class="headerlink" href="#configure-instance-detail-customer" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Network: Customer_Network</p></li>
+<li><p>Subnet: Customer_Public_subnet</p></li>
+<li><p>Auto-assign Public IP: Enable</p></li>
+</ul>
+</section>
+<section id="id6">
+<h4>2. Configure Security Group<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Create security group</p></li>
+<li><p>Security group name: Customer_EC2_SG</p></li>
+<li><p>Description: Security group for Customer EC2</p></li>
+<li><p>Add Inbound security groups rules</p>
+<ul>
+<li><p>rule 1</p>
+<ul>
+<li><p>Type: ssh</p></li>
+<li><p>Source type: Anywhere</p></li>
+</ul>
+</li>
+<li><p>rule 2</p>
+<ul>
+<li><p>Type: HTTP</p></li>
+<li><p>Source type: Anywhere</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id7">
+<h4>3. Launch instance<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Customer EC2 の IPv4 アドレスをメモする。</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/14_Create-Customer-EC2-06.png" /></p>
+</section>
+</section>
+<section id="step-15-create-a-vpc-endpoint">
+<h3>Step 15. Create a VPC Endpoint<a class="headerlink" href="#step-15-create-a-vpc-endpoint" title="Link to this heading">#</a></h3>
+<section id="configure-endpoint">
+<h4>1. Configure Endpoint<a class="headerlink" href="#configure-endpoint" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Security category: Other endpoint services</p></li>
+<li><p>Service settings:</p>
+<ul>
+<li><p><a class="reference internal" href="#step-8-create-an-endpoint-service"><span class="xref myst">Step 8</span></a> でメモした Service name をこちらにペストする。</p></li>
+<li><p>Verify service する。</p></li>
+</ul>
+</li>
+<li><p>VPC: (プールダウンから選択) Customer_Network</p></li>
+<li><p>Security groups: (一覧から選択) Customer_EC2_SG</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/15_Create-Endpoint-01.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/15_Create-Endpoint-02.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/15_Create-Endpoint-03.png" /></p>
+<ul class="simple">
+<li><p>Endpoint のステータスを確認する。</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/15_Create-Endpoint-05.png" /></p>
+</section>
+<section id="accept-endpoint-connection-request">
+<h4>2. Accept endpoint connection request<a class="headerlink" href="#accept-endpoint-connection-request" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Endpoint Connections を設定して、Endpoint のステータスが Available になるまで待つ。</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/15_Create-Endpoint-07.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/15_Create-Endpoint-08.png" /></p>
+<ul class="simple">
+<li><p>Endpoint のIPv4 アドレスをメモする。</p></li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/15_Create-Endpoint-09.png" /></p>
+</section>
+</section>
+<section id="step-16-test-the-connectivity">
+<h3>Step 16. Test the connectivity<a class="headerlink" href="#step-16-test-the-connectivity" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>SSH で Customer EC2 にアクセスして、curl で接続状況を確認する。</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-i<span class="w"> </span><span class="o">{</span>keypair<span class="o">}</span>.pem<span class="w"> </span>ec2-user@<span class="o">{</span>Cusotmer_EC2_IPv4_Address<span class="o">}</span>
+curl<span class="w"> </span><span class="o">{</span>Endpoint_IPv4_Address<span class="o">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>下記の内容が返される。</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;&lt;</span><span class="nt">h1</span><span class="p">&gt;</span> Welcome to Hangyuzs Server 1 <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><img alt="endpoint_architecture_demo" src="../../_images/16_connection-test.png" /></p>
+</section>
+<section id="step-17-delete-aws-resources">
+<h3>Step 17. Delete AWS Resources<a class="headerlink" href="#step-17-delete-aws-resources" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>リソースを削除する必要がある場合、下記の順番で行えればきれいに削除できる。</p>
+<ul>
+<li><p>EC2 Instance (2つ)</p></li>
+<li><p>VPC Endpoint</p></li>
+<li><p>Endpoint Service</p></li>
+<li><p>NLB</p></li>
+<li><p>Target Groups</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="endpoint_architecture_demo" src="../../_images/17_Delete-AWS-Resources-01.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/17_Delete-AWS-Resources-02.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/17_Delete-AWS-Resources-03.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/17_Delete-AWS-Resources-04.png" /></p>
+<p><img alt="endpoint_architecture_demo" src="../../_images/17_Delete-AWS-Resources-05.png" /></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./src/cloud"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="aws.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AWS</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="gcp_01.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">GCP - Associate Cloud Engineer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vpc-endpoint">VPC Endpoint について</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">VPC Endpoint とは</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">VPC Endpoint の機能</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">各種 VPC Endpoint の使用料金</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">VPC Endpoint を利用するメリット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">VPC Endpoint 利用シーン</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vpc-endpoint-2-vpc">実践デモ - VPC Endpoint で 2つの VPC 間にエンドツーエンドの接続を設定する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-a-service-provider-vpc">Step 1. Create a service provider VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-and-attach-an-igw">Step 2. Create and attach an IGW</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-service-igw">1. Create Service IGW</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-service-igw">2. Attach Service IGW</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-create-a-public-subnet">Step 3. Create a Public subnet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create-a-public-route-table-and-associate-it-with-the-subnet">Step 4. Create a Public Route Table and associate it with the subnet</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-service-public-route-table">1. Create Service Public Route Table</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-route-table-with-service-public-subnet">2. Associate Route Table with Service Public subnet</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-add-the-public-route-in-the-route-table">Step 5. Add the public Route in the Route table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-create-an-ec2-instance">Step 6. Create an EC2 Instance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-instance-detail-subnet">1. Configure Instance Detail(Subnet)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-advanced-details">2. Configure Advanced Details</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-security-group">3. Configure Security Group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-instance">4. Launch instance</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-create-a-network-loadbalancer">Step 7. Create a Network LoadBalancer</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-loadbalancer">1. Configure LoadBalancer</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-target-group">2. Create target group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#register-targets">3. Register targets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dns-name">4. DNS name</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-create-an-endpoint-service">Step 8. Create an Endpoint service</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-create-a-customer-vpc">Step 9. Create a customer VPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-10-create-and-attach-an-internet-gateway">Step 10. Create and attach an Internet Gateway</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-customer-igw">1. Create Customer IGW</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#attach-customer-igw">2. Attach Customer IGW</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-11-create-a-public-subnet">Step 11. Create a Public subnet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-12-create-a-public-route-table-and-associate-it-with-the-subnet">Step 12. Create a Public Route Table and associate it with the subnet</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-customer-public-route-table">1. Create Customer Public Route Table</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#associate-route-table-with-customer-public-subnet">2. Associate Route Table with Customer Public subnet</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-13-add-the-public-route-in-the-route-table">Step 13. Add the public Route in the Route table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-14-create-an-ec2-instance">Step 14. Create an EC2 Instance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-instance-detail-customer">1. Configure Instance Detail(Customer)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2. Configure Security Group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3. Launch instance</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-15-create-a-vpc-endpoint">Step 15. Create a VPC Endpoint</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-endpoint">1. Configure Endpoint</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accept-endpoint-connection-request">2. Accept endpoint connection request</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-16-test-the-connectivity">Step 16. Test the connectivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-17-delete-aws-resources">Step 17. Delete AWS Resources</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2021-2024 by Yuan Zhang.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
