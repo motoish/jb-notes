@@ -21,7 +21,6 @@
   - [AWS CodePipeline](https://docs.aws.amazon.com/en_us/codepipeline/latest/userguide/welcome.html): CI/CDパイプラインを構築
     - 迅速かつ信頼性の高いアプリ更新を実現する。
     - リリース結果を可視化して確認できる。
-  - [AWS CodeStar](https://docs.aws.amazon.com/codestar/latest/userguide/welcome.html): ウィザード形式でCI/CDパイプラインを構築
   - [AWS CodeArtifact](https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html): プライベートソフトウェア配信リポジトリサービス
   - [AWS CodeGuru](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html): 自動コードレビュー
 
